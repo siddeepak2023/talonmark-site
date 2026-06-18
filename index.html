@@ -6,6 +6,11 @@
 <title>talonmark — AI client reporting for marketing agencies</title>
 <meta name="description" content="Connect a client's Meta Ads, Google Ads, and GA4. talonmark computes every KPI, explains what changed and why, and generates a white-label report — in minutes, every month, without an analyst." />
 <link rel="icon" href="falcon-bird-white.png" />
+<script>
+  /* Theme init — before paint, no FOUC. JS off → CSS prefers-color-scheme fallback. */
+  (function(){try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+  function toggleTheme(){var el=document.documentElement,cur=el.getAttribute('data-theme');if(!cur)cur=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';var next=cur==='dark'?'light':'dark';el.setAttribute('data-theme',next);try{localStorage.setItem('theme',next);}catch(e){}}
+</script>
 
 <!-- Open Graph / social unfurl -->
 <meta property="og:title" content="talonmark — AI client reports that write themselves" />
@@ -27,10 +32,68 @@
 -->
 
 <style>
+  /* ══════════════════════════════════════════════════════════════════════
+     THEME SYSTEM — PRIMITIVES (brand, invariant) + SEMANTIC tokens (mapped).
+     Light default; dark with NO JS on first paint via prefers-color-scheme,
+     forceable via :root[data-theme]. New theme = one [data-theme] block.
+     All fg/bg pairings meet WCAG AA in both themes. */
   :root{
+    /* PRIMITIVES */
     --blue:#1565c0; --mid:#0d82a8; --teal:#0d9e7e;
-    --ink:#111827; --muted:#6b7280; --line:#e5e7eb; --bg:#ffffff; --soft:#f9fafb;
     --grad:linear-gradient(135deg,#1565c0 0%,#0d82a8 55%,#0d9e7e 100%);
+    --grad-field:linear-gradient(135deg,var(--field-1) 0%,var(--field-2) 58%,var(--field-3) 100%);
+    --on-brand:#ffffff;
+    --t-fast:.15s ease; --t-mid:.25s ease;
+    /* SEMANTIC — light */
+    color-scheme:light;
+    --ink:#111827;          /* text · headings        ~16:1 */
+    --body:#374151;         /* text · body            ~10:1 */
+    --muted:#6b7280;        /* text · muted          ~4.9:1 */
+    --faint:#667085;        /* text · faint (AA, was #9ca3af) */
+    --line:#e5e7eb;         /* border */
+    --bg:#ffffff;           /* surface · raised (cards) */
+    --soft:#f9fafb;         /* surface · sunken */
+    --surface-glass:rgba(255,255,255,.85);
+    --surface-overlay:rgba(255,255,255,.82);
+    --field-1:#ffffff; --field-2:#f5f8fb; --field-3:#eef2f6;
+    --teal-7:#0f766e;       /* text accent          ~5.2:1 */
+    --tint:rgba(13,158,126,.07);            /* card hover wash */
+    --tint-line:rgba(13,158,126,.18);
+    --shadow-sm:0 1px 2px rgba(12,16,24,.04),0 2px 6px rgba(12,16,24,.05);
+    --shadow-md:0 6px 18px rgba(12,16,24,.07),0 2px 6px rgba(12,16,24,.04);
+    --shadow-lg:0 18px 48px rgba(12,16,24,.12),0 6px 14px rgba(12,16,24,.06);
+    --shadow-brand:0 10px 30px rgba(13,158,126,.30);
+    --ring:0 0 0 3px rgba(13,158,126,.42);
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      color-scheme:dark;
+      --ink:#f3f4f6; --body:#c2c6cd; --muted:#8e939c; --faint:#828893;
+      --line:#1e2630; --bg:#121821; --soft:#0e141b;
+      --surface-glass:rgba(20,27,36,.72); --surface-overlay:rgba(12,17,23,.82);
+      --field-1:#0a0e14; --field-2:#0c1219; --field-3:#0e151d;
+      --teal-7:#34d3a8;
+      --tint:rgba(13,158,126,.12); --tint-line:rgba(13,158,126,.26);
+      --shadow-sm:0 1px 2px rgba(0,0,0,.4),0 2px 6px rgba(0,0,0,.28);
+      --shadow-md:0 6px 18px rgba(0,0,0,.46),0 2px 6px rgba(0,0,0,.3);
+      --shadow-lg:0 18px 48px rgba(0,0,0,.55),0 6px 14px rgba(0,0,0,.4);
+      --shadow-brand:0 10px 30px rgba(13,158,126,.36);
+      --ring:0 0 0 3px rgba(13,158,126,.55);
+    }
+  }
+  :root[data-theme="dark"]{
+    color-scheme:dark;
+    --ink:#f3f4f6; --body:#c2c6cd; --muted:#8e939c; --faint:#828893;
+    --line:#1e2630; --bg:#121821; --soft:#0e141b;
+    --surface-glass:rgba(20,27,36,.72); --surface-overlay:rgba(12,17,23,.82);
+    --field-1:#0a0e14; --field-2:#0c1219; --field-3:#0e151d;
+    --teal-7:#34d3a8;
+    --tint:rgba(13,158,126,.12); --tint-line:rgba(13,158,126,.26);
+    --shadow-sm:0 1px 2px rgba(0,0,0,.4),0 2px 6px rgba(0,0,0,.28);
+    --shadow-md:0 6px 18px rgba(0,0,0,.46),0 2px 6px rgba(0,0,0,.3);
+    --shadow-lg:0 18px 48px rgba(0,0,0,.55),0 6px 14px rgba(0,0,0,.4);
+    --shadow-brand:0 10px 30px rgba(13,158,126,.36);
+    --ring:0 0 0 3px rgba(13,158,126,.55);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
@@ -44,10 +107,10 @@
   .mark img{position:absolute;inset:8%;width:84%;height:84%;object-fit:contain}
 
   /* nav */
-  nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(255,255,255,.8);backdrop-filter:blur(16px);border-bottom:1px solid rgba(229,231,235,.8)}
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;background:var(--surface-overlay);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
   nav .row{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
   .brand{display:flex;align-items:center;gap:8px;font-weight:700;letter-spacing:-.01em}
-  .brand .by{font-size:11px;color:#9ca3af;text-transform:uppercase;letter-spacing:.1em;font-weight:600}
+  .brand .by{font-size:11px;color:var(--faint);text-transform:uppercase;letter-spacing:.1em;font-weight:600}
   .brand .bsub{font-size:12.5px;font-weight:500;color:var(--muted);letter-spacing:0;border-left:1px solid var(--line);padding-left:10px;margin-left:3px}
   @media(max-width:760px){.brand .bsub{display:none}}
   .navcta{display:flex;align-items:center;gap:26px}
@@ -55,7 +118,7 @@
   .navcta .btn-grad{margin-left:2px}
   .signin{font-size:14px;font-weight:500;color:var(--muted)}
   .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:600;border-radius:9px;cursor:pointer;transition:opacity .15s,background .15s;border:none;font-size:14px}
-  .btn-grad{background:var(--grad);color:#fff;padding:9px 16px}
+  .btn-grad{background:var(--grad);color:var(--on-brand);padding:9px 16px}
   .btn-grad:hover{opacity:.9}
   .btn-white{background:#fff;color:var(--ink);padding:13px 24px;font-weight:700}
   .btn-white:hover{background:#f3f4f6}
@@ -72,7 +135,7 @@
   .geo-layer svg{position:absolute}
 
   /* fledge-style halftone dot field — behind everything past the hero */
-  #bg{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;background:linear-gradient(135deg,#ffffff 0%,#f5f8fb 58%,#eef2f6 100%)}
+  #bg{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;background:var(--grad-field)}
   #bgdots{position:absolute;inset:0;width:100%;height:100%}
 
   /* nav tab links */
@@ -83,7 +146,7 @@
   .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.22);color:rgba(255,255,255,.95);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.16em;padding:7px 14px;border-radius:999px;margin-bottom:24px}
   .eye{display:inline-flex;align-items:center;gap:9px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;letter-spacing:.02em;color:rgba(255,255,255,.82);margin-bottom:24px}
   .eye i{width:6px;height:6px;border-radius:50%;background:#7ff0d4;box-shadow:0 0 0 4px rgba(127,240,212,.22)}
-  h1{font-size:60px;line-height:1.04;letter-spacing:-.025em;font-weight:900;color:#fff;margin-bottom:20px}
+  h1{font-size:60px;line-height:1.04;letter-spacing:-.025em;font-weight:900;color:var(--on-brand);margin-bottom:20px}
   h1 .accent{color:#a7f3d8}
   .sub{font-size:18px;color:rgba(255,255,255,.82);max-width:620px;margin:0 auto 32px;line-height:1.6}
   .herobtns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
@@ -99,17 +162,17 @@
   .grid{display:grid;gap:16px}
   .g3{grid-template-columns:repeat(3,1fr)}
   .g2{grid-template-columns:repeat(2,1fr)}
-  .card{border:1px solid var(--line);border-radius:14px;padding:20px;transition:border-color .15s,background .15s;background:#fff}
-  .card:hover{border-color:var(--teal);background:#f0fdfa}
+  .card{border:1px solid var(--line);border-radius:14px;padding:20px;transition:border-color .15s,background .15s,box-shadow .15s,transform .15s;background:var(--bg)}
+  .card:hover{border-color:var(--tint-line);background:var(--tint)}
   .kpi .top{display:flex;align-items:center;gap:8px;margin-bottom:8px}
   .kpi .dot{width:8px;height:8px;border-radius:99px;background:var(--teal);flex-shrink:0}
   .kpi .lbl{font-weight:700;font-size:14px}
   .kpi .formula{font-size:12px;color:var(--muted);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;line-height:1.5}
 
   /* pains */
-  .pain{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px}
+  .pain{display:flex;gap:12px;align-items:flex-start;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:16px}
   .pain svg{flex-shrink:0;margin-top:2px}
-  .pain p{font-size:14px;color:#374151}
+  .pain p{font-size:14px;color:var(--body)}
 
   /* steps */
   .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
@@ -117,35 +180,35 @@
   .step .ic{width:48px;height:48px;border-radius:13px;background:var(--grad);display:inline-flex;align-items:center;justify-content:center;margin-bottom:16px}
   .step .n{font-size:12px;font-weight:700;color:var(--teal);letter-spacing:.16em;margin-bottom:8px}
   .step h3{font-size:17px;font-weight:700;margin-bottom:8px}
-  .step p{font-size:14px;color:#4b5563;line-height:1.6}
+  .step p{font-size:14px;color:var(--body);line-height:1.6}
 
   /* pricing */
   .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
-  .tier{border:1px solid var(--line);border-radius:18px;padding:28px;display:flex;flex-direction:column;background:#fff}
+  .tier{border:1px solid var(--line);border-radius:18px;padding:28px;display:flex;flex-direction:column;background:var(--bg)}
   .tier.hot{border:2px solid var(--teal);box-shadow:0 12px 40px -12px rgba(13,158,126,.35);position:relative}
-  .tier.hot .tag{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--grad);color:#fff;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:5px 12px;border-radius:999px}
+  .tier.hot .tag{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--grad);color:#fff;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:5px 12px;border-radius:999px;color:var(--on-brand)}
   .tier .name{font-weight:800;font-size:18px;margin-bottom:4px}
   .tier .tl{font-size:13px;color:var(--muted);margin-bottom:16px;min-height:34px}
   .tier .price{font-size:42px;font-weight:900;letter-spacing:-.02em}
   .tier .price span{font-size:16px;color:var(--muted);font-weight:600}
   .tier ul{list-style:none;margin:20px 0;display:flex;flex-direction:column;gap:10px;flex:1}
-  .tier li{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#374151}
+  .tier li{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--body)}
   .tier li svg{flex-shrink:0;margin-top:2px}
   .tier .btn{width:100%}
-  .tier .btn-out{background:#fff;border:1px solid var(--line);color:var(--ink);padding:12px}
+  .tier .btn-out{background:var(--bg);border:1px solid var(--line);color:var(--ink);padding:12px}
   .tier .btn-out:hover{background:var(--soft)}
 
   /* faq */
-  details{border:1px solid var(--line);border-radius:14px;padding:18px 20px;background:#fff;margin-bottom:12px}
+  details{border:1px solid var(--line);border-radius:14px;padding:18px 20px;background:var(--bg);margin-bottom:12px}
   details summary{cursor:pointer;font-weight:600;font-size:15px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}
   details summary::-webkit-details-marker{display:none}
-  details summary .chev{transition:transform .2s;color:#9ca3af}
+  details summary .chev{transition:transform .2s;color:var(--faint)}
   details[open] summary .chev{transform:rotate(90deg)}
-  details p{margin-top:14px;font-size:14px;color:#4b5563;line-height:1.65}
+  details p{margin-top:14px;font-size:14px;color:var(--body);line-height:1.65}
 
   /* cta band */
   .ctaband{background:var(--grad);text-align:center;padding:72px 0}
-  .ctaband h2{color:#fff}
+  .ctaband h2{color:var(--on-brand)}
   .ctaband p{color:rgba(255,255,255,.85);max-width:560px;margin:0 auto 28px}
 
   /* footer */
@@ -154,8 +217,8 @@
   .flinks{display:flex;gap:20px}
   .flinks a{font-size:13px;color:var(--muted)}
   .flinks a:hover{color:var(--teal)}
-  .copy{font-size:12px;color:#9ca3af}
-  .trust{margin-top:20px;font-size:11px;color:#9ca3af;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .copy{font-size:12px;color:var(--faint)}
+  .trust{margin-top:20px;font-size:11px;color:var(--faint);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 
   @media(max-width:860px){
     h1{font-size:42px}
@@ -164,6 +227,27 @@
     .g2{grid-template-columns:1fr}
     .hero{padding:120px 0 72px}
   }
+
+  /* ══════════════════════════════════════════════════════════════════════
+     POLISH — elevation, interaction, focus. Token-driven → themes for free. */
+  .card,.pain,.tier,details{box-shadow:var(--shadow-sm);transition:transform var(--t-fast),box-shadow var(--t-fast),border-color var(--t-fast),background var(--t-fast)}
+  .card:hover,.pain:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+  .tier:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+  .tier.hot{box-shadow:var(--shadow-lg)}
+  .btn-grad,.btn-white{box-shadow:var(--shadow-sm);transition:transform var(--t-fast),box-shadow var(--t-fast),opacity var(--t-fast),background var(--t-fast)}
+  .btn-grad:hover,.btn-white:hover{transform:translateY(-1px);box-shadow:var(--shadow-brand)}
+  a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:none;box-shadow:var(--ring);border-radius:9px}
+
+  /* Theme toggle */
+  .theme-toggle{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:9px;border:1px solid var(--line);background:none;cursor:pointer;color:var(--muted);transition:color var(--t-fast),border-color var(--t-fast)}
+  .theme-toggle:hover{color:var(--teal-7);border-color:var(--teal)}
+  .theme-toggle .sun{display:none}.theme-toggle .moon{display:block}
+  :root[data-theme="dark"] .theme-toggle .sun,:root:not([data-theme="light"]) .theme-toggle .sun{display:block}
+  :root[data-theme="dark"] .theme-toggle .moon,:root:not([data-theme="light"]) .theme-toggle .moon{display:none}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .theme-toggle .sun{display:block}:root:not([data-theme="light"]) .theme-toggle .moon{display:none}}
+  :root[data-theme="light"] .theme-toggle .sun{display:none}:root[data-theme="light"] .theme-toggle .moon{display:block}
+
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}.card:hover,.pain:hover,.tier:hover,.btn-grad:hover,.btn-white:hover{transform:none}}
 </style>
 </head>
 <body>
@@ -184,6 +268,10 @@
       <a class="navlink" href="#pricing">Pricing</a>
       <a class="navlink" href="#faq">FAQ</a>
       <a class="signin" href="https://talon.bizfalconai.com/auth">Sign in</a>
+      <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Toggle light / dark theme" title="Toggle theme">
+        <svg class="moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
       <a class="btn btn-grad" href="https://talon.bizfalconai.com/talonmark">Get started free</a>
     </div>
   </div>
