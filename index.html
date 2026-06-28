@@ -10,7 +10,7 @@
 <meta property="og:type" content="website"/>
 <meta name="theme-color" content="#f1f1ea"/>
 <link rel="icon" href="https://talon.bizfalconai.com/falcon-bird-white.png"/>
-<script>(function(){try{var t=localStorage.getItem('bf-theme');if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<script>(function(){try{var t=localStorage.getItem('bf-theme');if(!t)t='light';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -55,7 +55,7 @@
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;overflow-x:hidden;}
-body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .3s,color .3s;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .18s ease,color .18s ease;}
 a{text-decoration:none;color:inherit;}svg{display:block;}
 ::selection{background:var(--accent-soft);color:var(--accent-2);}
 .wrap{max-width:var(--mx);margin:0 auto;padding:0 32px;}
@@ -98,9 +98,9 @@ nav.scrolled{background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-fi
 .hero .wrap{position:relative;z-index:2;}
 .hero-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:54px;align-items:center;}
 @media(max-width:940px){.hero-grid{grid-template-columns:1fr;gap:44px;}}
-.eyebrow{display:inline-flex;align-items:center;gap:11px;font-family:var(--mono);font-size:13px;letter-spacing:.01em;color:var(--accent-2);margin-bottom:22px;}
+.eyebrow{display:inline-flex;align-items:center;gap:11px;font-family:var(--mono);font-size:12px;letter-spacing:0;color:var(--accent-2);margin-bottom:22px;white-space:nowrap;}@media(max-width:680px){.eyebrow{white-space:normal;}}
 .eyebrow i{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 9px 1px var(--accent),0 0 0 4px var(--accent-soft);}
-h1{font-family:var(--display);font-size:clamp(38px,5.2vw,60px);font-weight:700;line-height:1.06;letter-spacing:-.03em;margin-bottom:24px;color:var(--ink);}
+h1{font-family:var(--display);font-size:clamp(38px,5.2vw,60px);font-weight:700;line-height:1.1;letter-spacing:-.03em;text-wrap:balance;margin-bottom:24px;color:var(--ink);}
 h1 .hl{position:relative;color:var(--accent-2);white-space:nowrap;}
 h1 .hl::after{content:'';position:absolute;left:0;bottom:-.04em;height:3px;width:100%;background:var(--accent);border-radius:2px;transform:scaleX(0);transform-origin:left;transition:transform .85s .35s cubic-bezier(.22,.61,.36,1);}
 .reveal.in h1 .hl::after{transform:scaleX(1);}
@@ -148,7 +148,7 @@ h1 .hl::after{content:'';position:absolute;left:0;bottom:-.04em;height:3px;width
 
 .trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--card);}
 .trust-in{max-width:var(--mx);margin:0 auto;padding:18px 32px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
-.trust .lab{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);}
+.trust .lab{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);}
 .chip{font-family:var(--mono);font-size:12px;color:var(--body);border:1px solid var(--line-2);padding:5px 11px;border-radius:7px;background:var(--surface-2);}
 @media(max-width:640px){.trust-in{padding:16px 20px;}}
 
@@ -167,14 +167,14 @@ section.alt{background:var(--bg-2);border-block:1px solid var(--line);}
 .feat:hover{transform:translateY(-3px);box-shadow:var(--sh-md);border-color:var(--line-2);}
 .feat-ico{width:42px;height:42px;border-radius:12px;background:var(--brand-soft);border:1px solid var(--line);display:grid;place-items:center;color:var(--brand);margin-bottom:18px;}
 .feat-ico svg{width:21px;height:21px;}
-.feat h4{font-family:var(--display);font-weight:600;font-size:17px;letter-spacing:-.01em;margin-bottom:8px;}
+.feat h3{font-family:var(--display);font-weight:600;font-size:17px;letter-spacing:-.01em;margin-bottom:8px;}
 .feat p{font-size:14px;color:var(--body);line-height:1.6;}
 
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;counter-reset:s;}
 @media(max-width:760px){.steps{grid-template-columns:1fr;}}
 .step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px;box-shadow:var(--sh-sm);}
 .step::before{counter-increment:s;content:'0' counter(s);font-family:var(--display);font-size:13px;font-weight:700;color:var(--accent);display:block;margin-bottom:14px;}
-.step h4{font-family:var(--display);font-weight:600;font-size:17px;margin-bottom:7px;}
+.step h3{font-family:var(--display);font-weight:600;font-size:17px;margin-bottom:7px;}
 .step p{font-size:14px;color:var(--body);line-height:1.6;}
 
 .toggle{display:inline-flex;align-items:center;gap:4px;border:1px solid var(--line-2);border-radius:100px;padding:4px;background:var(--card);margin-top:22px;box-shadow:var(--sh-sm);}
@@ -223,10 +223,10 @@ footer{border-top:1px solid var(--line);padding:54px 0 44px;background:var(--car
 .foot-brand{max-width:300px;}
 .foot-brand p{color:var(--muted);font-size:13.5px;line-height:1.6;margin-top:14px;}
 .foot-links{display:flex;gap:54px;flex-wrap:wrap;}
-.foot-col h6{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:14px;}
+.foot-col .fh{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
 .foot-col a{display:block;color:var(--body);font-size:14px;padding:5px 0;transition:color .15s;}
 .foot-col a:hover{color:var(--accent-2);}
-.foot-base{margin-top:44px;padding-top:22px;border-top:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--faint);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.foot-base{margin-top:44px;padding-top:22px;border-top:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--muted);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;}
 
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1);}
 .reveal.in{opacity:1;transform:none;}
@@ -294,6 +294,7 @@ footer{border-top:1px solid var(--line);padding:54px 0 44px;background:var(--car
     </div>
   </div>
 </header>
+<main>
 
 <div class="trust"><div class="trust-in"><span class="lab">Connects</span><span class="chip">Meta Ads</span><span class="chip">Google Ads</span><span class="chip">GA4</span><span class="chip">CSV / Excel export</span></div></div>
 
@@ -301,12 +302,12 @@ footer{border-top:1px solid var(--line);padding:54px 0 44px;background:var(--car
   <div class="wrap reveal">
     <div class="sec-head"><span class="sec-label">What you get</span><h2 class="sec-h">Every client KPI, computed and explained.</h2><p class="sec-sub">Static dashboards show numbers — you still write the analysis. Talonmark computes the metrics and writes the narrative, then hands you a report ready to send.</p></div>
     <div class="feats">
-      <div class="feat"><div class="feat-ico"><svg><use href="#i-chart"/></svg></div><h4>Every KPI, computed</h4><p>ROAS, CPA, CTR, CPC, conversion rate, spend pacing — computed across Meta, Google, and GA4, with the math shown. No spreadsheet wrangling.</p></div>
-      <div class="feat"><div class="feat-ico"><svg><use href="#i-pen"/></svg></div><h4>AI writes the narrative</h4><p>Talonmark explains what changed and why — “ROAS down 18% on Meta, driven by rising CPMs.” Plain-English analysis, not just a wall of numbers.</p></div>
-      <div class="feat"><div class="feat-ico"><svg><use href="#i-brush"/></svg></div><h4>White-label PDF</h4><p>Reports carry your agency logo and brand color. Send a polished, on-brand PDF your client actually reads — and trusts.</p></div>
-      <div class="feat"><div class="feat-ico"><svg><use href="#i-chat"/></svg></div><h4>Ask anything</h4><p>Ask any client account a question in plain English and get a computed answer, with the working shown. Answer the “why” on the call.</p></div>
-      <div class="feat"><div class="feat-ico"><svg><use href="#i-cal"/></svg></div><h4>Scheduled monthly</h4><p>Set it once; Talonmark generates and delivers every client’s report on schedule. Reclaim the reporting day each month.</p></div>
-      <div class="feat"><div class="feat-ico"><svg><use href="#i-shield"/></svg></div><h4>Client data stays safe</h4><p>Your export is parsed in the browser — nothing uploaded. Encrypted, isolated per account, never used for model training.</p></div>
+      <div class="feat"><div class="feat-ico"><svg><use href="#i-chart"/></svg></div><h3>Every KPI, computed</h3><p>ROAS, CPA, CTR, CPC, conversion rate, spend pacing — computed across Meta, Google, and GA4, with the math shown. No spreadsheet wrangling.</p></div>
+      <div class="feat"><div class="feat-ico"><svg><use href="#i-pen"/></svg></div><h3>AI writes the narrative</h3><p>Talonmark explains what changed and why — “ROAS down 18% on Meta, driven by rising CPMs.” Plain-English analysis, not just a wall of numbers.</p></div>
+      <div class="feat"><div class="feat-ico"><svg><use href="#i-brush"/></svg></div><h3>White-label PDF</h3><p>Reports carry your agency logo and brand color. Send a polished, on-brand PDF your client actually reads — and trusts.</p></div>
+      <div class="feat"><div class="feat-ico"><svg><use href="#i-chat"/></svg></div><h3>Ask anything</h3><p>Ask any client account a question in plain English and get a computed answer, with the working shown. Answer the “why” on the call.</p></div>
+      <div class="feat"><div class="feat-ico"><svg><use href="#i-cal"/></svg></div><h3>Scheduled monthly</h3><p>Set it once; Talonmark generates and delivers every client’s report on schedule. Reclaim the reporting day each month.</p></div>
+      <div class="feat"><div class="feat-ico"><svg><use href="#i-shield"/></svg></div><h3>Client data stays safe</h3><p>Your export is parsed in the browser — nothing uploaded. Encrypted, isolated per account, never used for model training.</p></div>
     </div>
   </div>
 </section>
@@ -315,9 +316,9 @@ footer{border-top:1px solid var(--line);padding:54px 0 44px;background:var(--car
   <div class="wrap reveal">
     <div class="sec-head"><span class="sec-label">How it works</span><h2 class="sec-h">Three steps to a client report.</h2><p class="sec-sub">Kill the monthly report grind. From raw ad export to a sent, on-brand PDF in minutes.</p></div>
     <div class="steps">
-      <div class="step"><h4>Drop the ad export</h4><p>Export Meta Ads, Google Ads, or GA4 for the client and the period. CSV or Excel — no integration to wire up.</p></div>
-      <div class="step"><h4>AI writes the analysis</h4><p>Talonmark computes every KPI and writes the “what changed and why” narrative across each channel, automatically.</p></div>
-      <div class="step"><h4>Send the white-label PDF</h4><p>Review, add your take, and export a branded PDF — or schedule it to send itself every month.</p></div>
+      <div class="step"><h3>Drop the ad export</h3><p>Export Meta Ads, Google Ads, or GA4 for the client and the period. CSV or Excel — no integration to wire up.</p></div>
+      <div class="step"><h3>AI writes the analysis</h3><p>Talonmark computes every KPI and writes the “what changed and why” narrative across each channel, automatically.</p></div>
+      <div class="step"><h3>Send the white-label PDF</h3><p>Review, add your take, and export a branded PDF — or schedule it to send itself every month.</p></div>
     </div>
   </div>
 </section>
@@ -352,14 +353,15 @@ footer{border-top:1px solid var(--line);padding:54px 0 44px;background:var(--car
   <div class="wrap reveal"><div class="cta"><h2>Stop writing reports. Start sending them.</h2><p>Drop an ad export and Talonmark builds the analysis and the white-label PDF in minutes. Free to try, no card.</p><a href="https://talon.bizfalconai.com/talonmark">Build a report <svg><use href="#i-arrow"/></svg></a></div></div>
 </section>
 
+</main>
 <footer>
   <div class="wrap">
     <div class="foot-in">
       <div class="foot-brand"><a href="#top" class="brand"><span class="mark"><img src="https://talon.bizfalconai.com/falcon-bird-white.png" alt=""></span><span><b>Talonmark</b></span></a><p>AI client reporting for marketing agencies. Computed KPIs, AI narrative, white-label PDFs. A BizFalcon AI product.</p></div>
       <div class="foot-links">
-        <div class="foot-col"><h6>Product</h6><a href="#features">Features</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="https://talon.bizfalconai.com/talonmark">Open app</a></div>
-        <div class="foot-col"><h6>BizFalcon</h6><a href="https://bizfalconai.com">Company</a><a href="https://talon.bizfalconai.com">Talon</a><a href="https://talonomic.bizfalconai.com">Talonomic</a><a href="https://fledge.bizfalconai.com">Fledge</a></div>
-        <div class="foot-col"><h6>Connect</h6><a href="https://github.com/siddeepak2023">GitHub</a><a href="mailto:sid.deepak2023@gmail.com">Email</a></div>
+        <div class="foot-col"><div class="fh">Product</div><a href="#features">Features</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="https://talon.bizfalconai.com/talonmark">Open app</a></div>
+        <div class="foot-col"><div class="fh">BizFalcon</div><a href="https://bizfalconai.com">Company</a><a href="https://talon.bizfalconai.com">Talon</a><a href="https://talonomic.bizfalconai.com">Talonomic</a><a href="https://fledge.bizfalconai.com">Fledge</a></div>
+        <div class="foot-col"><div class="fh">Connect</div><a href="https://github.com/siddeepak2023">GitHub</a><a href="mailto:sid.deepak2023@gmail.com">Email</a></div>
       </div>
     </div>
     <div class="foot-base"><span>© <span id="yr"></span> BizFalcon AI — Talonmark</span><span>The report writes itself</span></div>
