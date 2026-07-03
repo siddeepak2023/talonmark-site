@@ -70,31 +70,7 @@
           <span>YOUR LOGO <b>NOT OURS</b></span>
         </div>
       </div>
-      <div class="shot" aria-label="Talonmark: white-label PDF report and a queued campaign recommendation">
-        <div class="shot-bar"><span class="dots"><i></i><i></i><i></i></span><span>talonmark — report builder</span></div>
-        <div class="shot-body">
-          <div class="pdf-row" aria-hidden="true">
-            <div class="pdfpage"><i class="hd"></i><i class="w70"></i><i class="w55"></i><i></i><i class="w40"></i><i class="w70"></i><i class="w55"></i><i class="w40"></i></div>
-            <div class="pdf-meta">
-              FORMAT <b>WHITE-LABEL PDF</b><br>
-              NARRATIVE <b>AI-WRITTEN</b><br>
-              NUMBERS <b>COMPUTED</b><br>
-              LOGO <b>YOURS</b><br>
-              TIME <b>MINUTES, NOT FRIDAYS</b>
-            </div>
-          </div>
-          <div class="demo-tiles show">
-            <div class="tile"><b>4.2×</b><s>Blended ROAS</s></div>
-            <div class="tile neg"><b>2.4×</b><s>CPA vs target, “Broad”</s></div>
-            <div class="tile"><b>12 min</b><s>Export → client-ready</s></div>
-          </div>
-          <div class="rec-mini" style="margin-top:14px">
-            <div class="rt"><span>PLAYBOOK AD-SPEND-03</span><span>CONF 0.86</span></div>
-            Pause ad set “Prospecting — Broad” — CPA 2.4× target for 6 days. <span class="sv">Est. save $1,180/mo.</span> Awaiting your approval.
-          </div>
-        </div>
-        <div class="shot-foot"><span>AUTOPILOT · APPROVAL-GATED</span><a href="#demo">SEE IT RUN ▸</a></div>
-      </div>
+      
     </div>
   </div>
 </section>
@@ -115,12 +91,41 @@
           <div class="demo-q" id="demoQ"></div>
           <div class="demo-code" id="demoCode"></div>
           <div class="demo-tiles" id="demoTiles"></div>
+          <div class="demo-ins" id="demoIns" aria-live="polite"></div>
         </div>
         <div class="shot-foot"><span>COMPUTED FROM YOUR EXPORTS</span><a href="https://talon.bizfalconai.com/talonmark">RUN IT ON YOUR CLIENTS ▸</a></div>
       </div>
       <div class="demo-prog" id="demoProg" aria-hidden="true"><i></i></div>
       <div class="demo-cap" id="demoCap" aria-live="polite"></div>
     </div>
+  </div>
+</section>
+
+<!-- INSIDE THE PRODUCT — the actual app screen, same design system -->
+<section id="product">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="eyebrow">Inside the product</div>
+      <h2>This is the app.</h2>
+      <p>The report builder as it actually runs: brand it, drop the export, watch the preview build.</p>
+    </div>
+    <div class="shot rv d1" aria-label="The Talonmark report builder screen">
+      <div class="shot-bar"><span class="dots"><i></i><i></i><i></i></span><span>talonmark — report builder</span><span style="margin-left:auto">BATCH ALL CLIENTS · PARSED IN YOUR BROWSER</span></div>
+      <div class="replica-form">
+        <div class="rf-l">
+          <div class="rf-field">Agency name (your brand)<i>Bright Harbor Media</i></div>
+          <div class="rf-field">Client name<i>Acme Coffee Co.</i></div>
+          <div class="rf-field">Reporting period<i>May 2026</i></div>
+          <div class="rf-field">Brand accent<i>#8E2A22</i></div>
+          <div class="rf-field">Current period CSV<i>meta_campaigns_may.csv — required</i></div>
+        </div>
+        <div class="rf-r">
+          <div class="pp-big" aria-hidden="true"><i class="hd"></i><i style="width:70%"></i><i style="width:55%"></i><i></i><i style="width:40%"></i><i style="width:70%"></i><i style="width:55%"></i></div>
+          <span>Report preview builds here — your logo, computed KPIs, written “why.”</span>
+        </div>
+      </div>
+    </div>
+    <canvas class="art art--falcon rv" data-art="image" data-src="./falcon-lines-dark.png" aria-hidden="true"></canvas>
   </div>
 </section>
 
@@ -332,6 +337,7 @@ window.DUSK.demoRunner({
   tilesEl: document.getElementById("demoTiles"),
   capEl: document.getElementById("demoCap"),
   progEl: document.getElementById("demoProg"),
+  insEl: document.getElementById("demoIns"),
   scenarios: [
     {
       label: "REPORT", cap: "WHITE-LABEL PDF — YOUR LOGO, COMPUTED NUMBERS",
@@ -341,7 +347,8 @@ window.DUSK.demoRunner({
         { v: 6, label: "Pages, branded" },
         { v: 12, label: "Charts, computed" },
         { v: 12, suffix: " min", label: "Export → client-ready" }
-      ]
+      ],
+      ins: "<b>Twelve minutes from export to client-ready</b> — six branded pages, every number computed from the CSV."
     },
     {
       label: "NARRATIVE", cap: "AI-WRITTEN NARRATIVE — NO HALLUCINATED ROAS",
@@ -351,7 +358,8 @@ window.DUSK.demoRunner({
         { static: "4.2×", label: "Blended ROAS, computed" },
         { v: 12400, prefix: "$", label: "Spend analyzed" },
         { static: "0", label: "Uncited numbers allowed" }
-      ]
+      ],
+      ins: "<b>The prose can only cite computed facts</b> — if the number isn't in the data, it can't be in the summary."
     },
     {
       label: "AUTOPILOT", cap: "CAMPAIGN AUTOPILOT — EVERY ACTION WAITS FOR YOU",
@@ -361,7 +369,8 @@ window.DUSK.demoRunner({
         { v: 1, label: "Ad set over target", neg: true },
         { v: 1180, prefix: "$", suffix: "/mo", label: "Est. save if paused" },
         { static: "QUEUED", label: "Rec → your approval" }
-      ]
+      ],
+      ins: "<b>One ad set is bleeding</b> — CPA 2.4× target for six days. Pause is queued; nothing touches the account without you."
     },
     {
       label: "BATCH", cap: "BATCH MODE — THE WHOLE ROSTER IN ONE SITTING",
@@ -371,7 +380,8 @@ window.DUSK.demoRunner({
         { v: 10, label: "Clients processed" },
         { v: 10, label: "Branded PDFs" },
         { static: "FRIDAY, FREED", label: "Account-manager hours" }
-      ]
+      ],
+      ins: "<b>The whole roster in one sitting</b> — ten clients, ten branded PDFs, one command."
     }
   ]
 });
