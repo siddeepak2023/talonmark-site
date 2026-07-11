@@ -12,7 +12,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./dusk.css">
 <style>
 .hero-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:center}
@@ -37,7 +37,7 @@
       TALONMARK <span class="sub">/ BIZFALCON AI</span>
     </a>
     <nav class="nav-links" aria-label="Primary">
-      <a href="#demo">Live demo</a>
+      <a href="#demo">Preview</a>
       <a href="#benefits">Features</a>
       <a href="#how">How it works</a>
       <a href="#pricing">Pricing</a>
@@ -56,12 +56,11 @@
 <!-- HERO -->
 <section class="hero">
   <canvas class="hero-canvas" id="terrain" aria-hidden="true"></canvas>
-  <div class="hero-fade" aria-hidden="true"></div>
   <div class="wrap hero-in">
     <div class="hero-grid">
       <div>
         <span class="chip hero-chip"><i class="pulse"></i>NEW — CAMPAIGN AUTOPILOT · HUMAN-GATED</span>
-        <h1>Client reports that write themselves.</h1>
+        <h1>Client reports that <span class="accent-serif">write themselves</span>.</h1>
         <p class="hero-sub">Drop in your ad platform exports. Talonmark computes the numbers, <strong>writes the narrative, and ships a white-label PDF</strong> with your logo on it — before your account manager finishes coffee.</p>
         <div class="hero-ctas">
           <a class="btn btn--primary" href="https://talon.bizfalconai.com/talonmark">Start free</a>
@@ -79,35 +78,9 @@
 </section>
 
 <!-- DEMO VIDEO — auto-running feature showcase -->
-<section id="demo" class="dotbg">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <div class="eyebrow">Live demo</div>
-      <h2>Watch a report build itself.</h2>
-      <p>Four features, running on a real Meta campaigns export. Click a scene or let it roll.</p>
-    </div>
-    <div class="rv d1">
-      <div class="demo-tabs" id="demoTabs" role="tablist" aria-label="Demo scenes"></div>
-      <div class="shot" id="demoRoot">
-        <div class="shot-bar"><span class="dots"><i></i><i></i><i></i></span><span>talonmark — live session</span></div>
-        <div class="shot-body">
-          <div class="demo-q" id="demoQ"></div>
-          <div class="demo-code" id="demoCode"></div>
-          <div class="demo-tiles" id="demoTiles"></div>
-          <div class="demo-ins" id="demoIns" aria-live="polite"></div>
-        </div>
-        <div class="shot-foot"><span>COMPUTED FROM YOUR EXPORTS</span><a href="https://talon.bizfalconai.com/talonmark">RUN IT ON YOUR CLIENTS ▸</a></div>
-      </div>
-      <div class="demo-prog" id="demoProg" aria-hidden="true"><i></i></div>
-      <div class="demo-cap" id="demoCap" aria-live="polite"></div>
-    </div>
-  </div>
-</section>
-
-<!-- INSIDE THE PRODUCT — the actual app screen, same design system -->
 <section id="product">
   <div class="wrap">
-    <div class="sec-head rv">
+    <div class="sec-head rv" data-dock>
       <div class="eyebrow">Inside the product</div>
       <h2>The report builder, exactly as it runs.</h2>
       <p>Brand the report, drop the export, review the preview — then send it under your own name.</p>
@@ -131,7 +104,6 @@
   </div>
 </section>
 
-<!-- BENEFITS -->
 <section id="benefits">
   <div class="wrap">
     <div class="sec-row">
@@ -140,7 +112,7 @@
         <h2>Friday reports, without the Friday.</h2>
         <p>The report is the product your client judges you on. Talonmark makes it computed, written, and branded — in minutes.</p>
       </div>
-      <canvas class="art art--sphere rv d1" data-art="sphere" aria-hidden="true"></canvas>
+      <canvas class="art art--sphere rv d1" data-art="glitchsphere" aria-hidden="true"></canvas>
     </div>
     <div class="bento">
       <article class="cell wide rv">
@@ -179,12 +151,49 @@
   </div>
 </section>
 
+<section id="demo" class="dotbg">
+  <div class="wrap">
+    <div class="sec-row">
+      <div class="sec-head rv">
+      <div class="eyebrow">Preview</div>
+      <h2>Watch a report build itself.</h2>
+      <p>Four features, running on a real Meta campaigns export. Click a scene or let it roll.</p>
+      </div>
+      <canvas class="art art--inline rv d1" data-art="ghostchart" aria-hidden="true"></canvas>
+    </div>
+    <div class="rv d1">
+      <div class="demo-tabs" id="demoTabs" role="tablist" aria-label="Demo scenes"></div>
+      <div class="shot" id="demoRoot">
+        <div class="shot-bar"><span class="dots"><i></i><i></i><i></i></span><span>talonmark — live session</span></div>
+        <div class="shot-body">
+          <div class="demo-q" id="demoQ"></div>
+          <div class="demo-code" id="demoCode"></div>
+          <div class="demo-tiles" id="demoTiles"></div>
+          <div class="demo-ins" id="demoIns" aria-live="polite"></div>
+        </div>
+        <div class="shot-foot"><span>COMPUTED FROM YOUR EXPORTS</span><a href="https://talon.bizfalconai.com/talonmark">RUN IT ON YOUR CLIENTS ▸</a></div>
+      </div>
+      <div class="demo-prog" id="demoProg" aria-hidden="true"><i></i></div>
+      <div class="demo-cap" id="demoCap" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- INSIDE THE PRODUCT — the actual app screen, same design system -->
+
+
+<!-- BENEFITS -->
+
+
 <!-- HOW IT WORKS -->
 <section id="how">
   <div class="wrap">
-    <div class="sec-head rv">
-      <div class="eyebrow">How it works</div>
-      <h2>Export. Generate. Send.</h2>
+    <div class="sec-row">
+      <div class="sec-head rv">
+        <div class="eyebrow">How it works</div>
+        <h2>Export. Generate. Send.</h2>
+      </div>
+      <canvas class="art art--inline rv d1" data-art="ascent" aria-hidden="true"></canvas>
     </div>
     <div class="steps">
       <div class="step rv">
@@ -200,19 +209,19 @@
         <p>Download or share a branded link. Approve any queued Autopilot recommendations while you're there.</p>
       </div>
     </div>
-    <div class="obs rv" aria-hidden="true">
-      <canvas class="art" data-art="massif"></canvas>
-    </div>
   </div>
 </section>
 
 <!-- PRICING -->
 <section id="pricing" class="dotbg">
   <div class="wrap">
-    <div class="sec-head rv">
-      <div class="eyebrow">Pricing</div>
-      <h2>Less than an hour of account-manager time.</h2>
-      <p>Annual plans save ~2 months. Cancel anytime.</p>
+    <div class="sec-row">
+      <div class="sec-head rv">
+        <div class="eyebrow">Pricing</div>
+        <h2>Less than an hour of account-manager time.</h2>
+        <p>Annual plans save ~2 months. Cancel anytime.</p>
+      </div>
+      <canvas class="art art--inline rv d1" data-art="curve" aria-hidden="true"></canvas>
     </div>
     <div class="plans">
       <div class="plan rv">
@@ -265,9 +274,6 @@
         <a class="btn btn--primary" href="https://talon.bizfalconai.com/talonmark">Get Autopilot</a>
       </div>
     </div>
-    <div class="obs rv" aria-hidden="true">
-      <canvas class="art" data-art="massif" data-variant="twin" data-seed="5.53"></canvas>
-    </div>
   </div>
 </section>
 
@@ -301,7 +307,7 @@
         <div class="a">Meta Ads, Google Ads, and GA4 via standard CSV exports — dropped in together for one blended report.</div>
       </details>
     </div>
-    <canvas class="art art--falcon" data-art="image" data-src="./falcon-lines-dark.png" aria-hidden="true"></canvas>
+      <canvas class="art art--faqfield" data-art="starfield" aria-hidden="true"></canvas>
     </div>
   </div>
 </section>
@@ -313,20 +319,38 @@
     <h2>Ship Friday's reports by lunch.</h2>
     <p>Drop in one export. Get a client-ready, white-label PDF.</p>
     <a class="btn btn--primary" href="https://talon.bizfalconai.com/talonmark">Start free</a>
-    <canvas class="art art--dome" data-art="diamond" aria-hidden="true" style="max-width:760px;margin:60px auto 0"></canvas>
+    <canvas class="art art--dome art--eclipse" data-art="eclipse" aria-hidden="true" style="max-width:760px;margin:60px auto 0"></canvas>
   </div>
 </section>
 
 <footer class="footer">
-  <div class="wrap foot-in">
-    <span>© 2026 BIZFALCON AI — TALONMARK</span>
-    <nav class="foot-links" aria-label="Footer">
-      <a href="https://bizfalconai.com">BizFalcon AI</a>
-      <a href="https://talon.bizfalconai.com">Talon</a>
-      <a href="https://talonomic.bizfalconai.com">Talonomic</a>
-      <a href="./privacy.html">Privacy</a>
-      <a href="./terms.html">Terms</a>
-    </nav>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="foot-logo"><img src="./falcon-bird-white.png" alt="" style="width:20px;height:20px;background:#0A0A0B;border-radius:5px;padding:3px;box-sizing:border-box"><b>TALONMARK</b><span>/ BIZFALCON AI</span></div>
+        <p>Client reports that write themselves. Real analysis, agency-ready in minutes.</p>
+      </div>
+      <nav class="foot-col" aria-label="Products">
+        <h4>Products</h4>
+        <a href="https://talon.bizfalconai.com">Talon</a>
+        <a href="https://talon.bizfalconai.com/talonomic">Talonomic</a>
+        <a href="https://talon.bizfalconai.com/talonmark">Talonmark</a>
+      </nav>
+      <nav class="foot-col" aria-label="Company">
+        <h4>Company</h4>
+        <a href="https://bizfalconai.com">BizFalcon AI</a>
+        <a href="mailto:hello@bizfalconai.com">Contact</a>
+      </nav>
+      <nav class="foot-col" aria-label="Legal">
+        <h4>Legal</h4>
+        <a href="./privacy.html">Privacy</a>
+        <a href="./terms.html">Terms</a>
+      </nav>
+    </div>
+    <div class="foot-base">
+      <span>© 2026 BizFalcon AI. All rights reserved.</span>
+      <span class="foot-sig">REPORTS THAT WRITE THEMSELVES</span>
+    </div>
   </div>
 </footer>
 
