@@ -41,6 +41,7 @@
       <a href="#benefits">Features</a>
       <a href="#how">How it works</a>
       <a href="#pricing">Pricing</a>
+      <a href="./blog/">Blog</a>
       <a href="#faq">FAQ</a>
     </nav>
     <div class="nav-right">
@@ -76,17 +77,52 @@
     </div>
   </div>
 </section>
+<section id="demo" class="dotbg">
+  <div class="wrap">
+    <!-- sec-head only — the falcon docks in the open right column of this row -->
+    <div class="sec-head rv" data-dock>
+      <div class="eyebrow">See it in action</div>
+      <h2>Watch a report build itself.</h2>
+      <p>Four features on a sample Meta campaigns export — the flow and report structure are the real product. Click a scene or let it roll.</p>
+    </div>
+    <!-- onboarding walkthrough video — appears when ./media/onboarding.mp4 ships -->
+    <div class="onb-video rv" id="onbVideo" style="display:none">
+      <div class="shot-bar"><span>talonmark — onboarding walkthrough</span><span style="margin-left:auto">REAL SESSION · 90 SEC</span></div>
+      <video src="./media/onboarding.mp4" controls playsinline preload="metadata"
+             aria-label="Talonmark walkthrough: dropping an ad export and sending the finished client report"></video>
+    </div>
+    <div class="rv d1">
+      <div class="demo-tabs" id="demoTabs" role="tablist" aria-label="Demo scenes"></div>
+      <div class="shot" id="demoRoot">
+        <div class="shot-bar"><span class="dots"><i></i><i></i><i></i></span><span>talonmark — sample session</span></div>
+        <div class="shot-body">
+          <div class="demo-q" id="demoQ"></div>
+          <div class="demo-code" id="demoCode"></div>
+          <div class="demo-tiles" id="demoTiles"></div>
+          <div class="demo-ins" id="demoIns" aria-live="polite"></div>
+        </div>
+        <div class="shot-foot"><span>COMPUTED FROM YOUR EXPORTS</span><a href="https://talon.bizfalconai.com/talonmark">RUN IT ON YOUR CLIENTS ▸</a></div>
+      </div>
+      <div class="demo-prog" id="demoProg" aria-hidden="true"><i></i></div>
+      <div class="demo-cap" id="demoCap" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
 
 <!-- DEMO VIDEO — auto-running feature showcase -->
 <section id="product">
   <div class="wrap">
-    <div class="sec-head rv" data-dock>
-      <div class="eyebrow">Inside the product</div>
-      <h2>The report builder, exactly as it runs.</h2>
-      <p>Brand the report, drop the export, review the preview — then send it under your own name.</p>
+    <div class="sec-row">
+      <div class="sec-head rv">
+        <div class="eyebrow">Inside the product</div>
+        <h2>From ad export to client-ready report.</h2>
+        <p>Brand the report, drop the export, review the preview — then send it under your own name. Every number in the narrative is checked against the computation that produced it; your client can audit any figure.</p>
+      </div>
+      <canvas class="art art--inline rv d1" data-art="ghostchart" aria-hidden="true"></canvas>
     </div>
     <div class="shot rv d1" aria-label="The Talonmark report builder screen">
-      <div class="shot-bar"><span class="dots"><i></i><i></i><i></i></span><span>talonmark — report builder</span><span style="margin-left:auto">BATCH ALL CLIENTS · PARSED IN YOUR BROWSER</span></div>
+      <div class="shot-bar"><span class="dots"><i></i><i></i><i></i></span><span>talonmark — report builder</span><span style="margin-left:auto">SAMPLE INPUTS · BATCH ALL CLIENTS · PARSED IN YOUR BROWSER</span></div>
       <div class="replica-form">
         <div class="rf-l">
           <div class="rf-field">Agency name (your brand)<i>Bright Harbor Media</i></div>
@@ -119,65 +155,78 @@
         <span class="cell-idx">C1 / CORE</span>
         <h3>White-label PDF, your brand</h3>
         <p>Your logo, your colors, your domain on the share link. The client sees your agency — Talonmark stays invisible.</p>
+        <div class="scm sc-drift" aria-hidden="true">
+          <span class="scm-tag">Report</span>
+          <div class="scm-acts">
+            <div class="ar"><span class="pri">PDF</span><p>northline_agency · June performance</p><span class="imp">9 pages</span></div>
+            <div class="ar"><span class="pri">LINK</span><p>reports.northline.co/june-2026</p><span class="imp">branded</span></div>
+          </div>
+          <div class="scm-meta"><span>Logo <b>yours</b></span><span>Colors <b>yours</b></span><span>Talonmark <b>invisible</b></span></div>
+        </div>
       </article>
       <article class="cell rv d1">
         <span class="cell-idx">C2 / NARRATIVE</span>
         <h3>AI-written, number-checked</h3>
         <p>The narrative is drafted by AI but every figure in it is computed from the export — no hallucinated ROAS.</p>
+        <div class="scm sc-drift dr2" aria-hidden="true">
+          <span class="scm-tag">Checked</span>
+          <span class="scm-vbadge">Number-checked</span>
+          <div class="scm-code">"Blended ROAS improved to <b>3.4×</b> as CPA fell <b>11%</b>…"</div>
+          <div class="scm-meta"><span>3.4× <b>= rev / spend ✓</b></span><span>−11% <b>= Δ cpa ✓</b></span></div>
+        </div>
       </article>
       <article class="cell rv">
         <span class="cell-idx">C3 / AGENTIC</span>
         <h3>Campaign Autopilot</h3>
         <p>Playbooks watch CPA and pacing, then queue pause/scale recommendations. Nothing touches an ad account without your explicit approval.</p>
+        <div class="scm" aria-hidden="true">
+          <span class="scm-tag">Queue</span>
+          <div class="scm-sched">
+            <div class="sr2"><b>REC</b> pause "US-broad" · CPA $62<span class="st live">queued</span></div>
+            <div class="sr2"><b>REC</b> scale "retarget-30d" +20%<span class="st">✓ approved</span></div>
+          </div>
+        </div>
       </article>
       <article class="cell rv d1">
         <span class="cell-idx">C4 / INPUT</span>
         <h3>Multi-platform exports</h3>
         <p>Meta Ads, Google Ads, and GA4 — drop the exports in together and get one blended, client-ready story.</p>
+        <div class="scm" aria-hidden="true">
+          <span class="scm-tag">Blend</span>
+          <div class="scm-modl">
+            <div class="mr">Meta Ads export<span class="tag2">Loaded</span></div>
+            <div class="mr">Google Ads export<span class="tag2">Loaded</span></div>
+            <div class="mr">GA4 export<span class="tag2">Loaded</span></div>
+            <div class="mr">Blended story<span class="tag2">Ready</span></div>
+          </div>
+        </div>
       </article>
       <article class="cell rv d2">
         <span class="cell-idx">C5 / SCALE</span>
         <h3>Batch every client</h3>
         <p>Run the whole roster at once. Ten clients, ten branded PDFs, one sitting.</p>
-        <div class="pdf-strip" aria-hidden="true">
-          <div class="pp"><i class="hd"></i><i></i><i></i><i></i></div>
-          <div class="pp"><i class="hd"></i><i></i><i></i><i></i></div>
-          <div class="pp"><i class="hd"></i><i></i><i></i><i></i></div>
-          <div class="pp"><i class="hd"></i><i></i><i></i><i></i></div>
-          <div class="pp"><i class="hd"></i><i></i><i></i><i></i></div>
+        <div class="scm" aria-hidden="true">
+          <span class="scm-tag">Batch</span>
+          <div class="pdf-strip" style="margin-top:2px">
+            <div class="pp"><i class="hd"></i><i></i><i></i><i></i></div>
+            <div class="pp"><i class="hd"></i><i></i><i></i><i></i></div>
+            <div class="pp"><i class="hd"></i><i></i><i></i><i></i></div>
+            <div class="pp"><i class="hd"></i><i></i><i></i><i></i></div>
+            <div class="pp"><i class="hd"></i><i></i><i></i><i></i></div>
+          </div>
+          <div class="scm-up">
+            <div class="track"><div class="fill"></div></div>
+            <div class="lbl">
+              <span class="busy">rendering roster…</span>
+              <span class="done">✓ 10/10 clients · pdfs ready</span>
+            </div>
+          </div>
         </div>
       </article>
     </div>
   </div>
 </section>
 
-<section id="demo" class="dotbg">
-  <div class="wrap">
-    <div class="sec-row">
-      <div class="sec-head rv">
-      <div class="eyebrow">Preview</div>
-      <h2>Watch a report build itself.</h2>
-      <p>Four features, running on a real Meta campaigns export. Click a scene or let it roll.</p>
-      </div>
-      <canvas class="art art--inline rv d1" data-art="ghostchart" aria-hidden="true"></canvas>
-    </div>
-    <div class="rv d1">
-      <div class="demo-tabs" id="demoTabs" role="tablist" aria-label="Demo scenes"></div>
-      <div class="shot" id="demoRoot">
-        <div class="shot-bar"><span class="dots"><i></i><i></i><i></i></span><span>talonmark — live session</span></div>
-        <div class="shot-body">
-          <div class="demo-q" id="demoQ"></div>
-          <div class="demo-code" id="demoCode"></div>
-          <div class="demo-tiles" id="demoTiles"></div>
-          <div class="demo-ins" id="demoIns" aria-live="polite"></div>
-        </div>
-        <div class="shot-foot"><span>COMPUTED FROM YOUR EXPORTS</span><a href="https://talon.bizfalconai.com/talonmark">RUN IT ON YOUR CLIENTS ▸</a></div>
-      </div>
-      <div class="demo-prog" id="demoProg" aria-hidden="true"><i></i></div>
-      <div class="demo-cap" id="demoCap" aria-live="polite"></div>
-    </div>
-  </div>
-</section>
 
 <!-- INSIDE THE PRODUCT — the actual app screen, same design system -->
 
@@ -199,27 +248,70 @@
       <div class="step rv">
         <h3>Export campaigns</h3>
         <p>Standard CSV exports from Meta Ads, Google Ads, or GA4 — the ones you already pull.</p>
+        <div class="scm" aria-hidden="true">
+          <span class="scm-tag">Export</span>
+          <div class="scm-up"><span class="fchip2">⌁ meta_campaigns_june.csv</span>
+            <div class="scm-meta" style="margin-top:9px"><span>Campaigns <b>14</b></span><span>Spend <b>$48,210</b></span></div>
+          </div>
+        </div>
       </div>
       <div class="step rv d1">
         <h3>Generate</h3>
         <p>Talonmark computes the KPIs, writes the narrative, and lays out the <code>white-label PDF</code>.</p>
+        <div class="scm" aria-hidden="true">
+          <span class="scm-tag">Generate</span>
+          <div class="scm-up">
+            <div class="track" style="margin-top:4px"><div class="fill"></div></div>
+            <div class="lbl">
+              <span class="busy">computing kpis · writing narrative…</span>
+              <span class="done">✓ 9-page pdf · numbers verified</span>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="step rv d2">
         <h3>Send to client</h3>
         <p>Download or share a branded link. Approve any queued Autopilot recommendations while you're there.</p>
+        <div class="scm" aria-hidden="true">
+          <span class="scm-tag">Send</span>
+          <div class="scm-sched">
+            <div class="sr2"><b>PDF</b> june_review.pdf<span class="st">✓ sent</span></div>
+            <div class="sr2"><b>LINK</b> reports.northline.co<span class="st">✓ live</span></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- PRICING -->
+
+<!-- ============ PROOF (hidden until real quotes exist) ============
+     To activate: set style="display:block" on #proof, replace the sample
+     structure below with REAL customer quotes (name + store/agency, with
+     permission). Never ship invented testimonials. -->
+<section id="proof" style="display:none" aria-hidden="true">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="eyebrow">From operators</div>
+      <h2>What early users say</h2>
+    </div>
+    <div class="proof-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+      <!-- <figure class="proof-card" style="border:1px solid var(--line);background:var(--card);padding:22px">
+        <blockquote style="font-size:14.5px;line-height:1.7">"QUOTE"</blockquote>
+        <figcaption style="margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)">NAME - COMPANY</figcaption>
+      </figure> -->
+    </div>
+  </div>
+</section>
+
 <section id="pricing" class="dotbg">
   <div class="wrap">
     <div class="sec-row">
       <div class="sec-head rv">
         <div class="eyebrow">Pricing</div>
         <h2>Less than an hour of account-manager time.</h2>
-        <p>Annual plans save ~2 months. Cancel anytime.</p>
+        <p>Founding pricing, locked for early accounts. It's this price because there's no sales team or ad budget baked in — the analysis runs in your browser and the company is one person. Annual plans save ~2 months. Cancel anytime.</p>
       </div>
       <canvas class="art art--inline rv d1" data-art="curve" aria-hidden="true"></canvas>
     </div>
@@ -251,8 +343,8 @@
       </div>
       <div class="plan rv d2">
         <div class="plan-name">Studio</div>
-        <div class="plan-price">$199<span class="per">/mo</span></div>
-        <div class="plan-bill">$166/mo billed annually · $1,990/yr</div>
+        <div class="plan-price">$129<span class="per">/mo</span></div>
+        <div class="plan-bill">$108/mo billed annually · $1,290/yr</div>
         <ul>
           <li>Everything in Agency, and:</li>
           <li>Full roster batch runs</li>
@@ -336,6 +428,15 @@
         <a href="https://talon.bizfalconai.com/talonomic">Talonomic</a>
         <a href="https://talon.bizfalconai.com/talonmark">Talonmark</a>
       </nav>
+      <nav class="foot-col" aria-label="Resources">
+        <h4>Resources</h4>
+        <a href="https://talon.bizfalconai.com/demo">Live preview</a>
+        <a href="./blog/">Blog</a>
+        <a href="./compare.html">vs AgencyAnalytics / Swydo</a>
+        <a href="https://talon.bizfalconai.com/talonmark/batch">Batch reports</a>
+        <a href="https://talon.bizfalconai.com/templates">Report templates</a>
+        <a href="https://talon.bizfalconai.com/help">Help</a>
+      </nav>
       <nav class="foot-col" aria-label="Company">
         <h4>Company</h4>
         <a href="https://bizfalconai.com">BizFalcon AI</a>
@@ -414,6 +515,15 @@ window.DUSK.demoRunner({
     }
   ]
 });
+})();
+</script>
+<script>
+// Reveal the onboarding video frame only when the file actually exists.
+(function () {
+  var box = document.getElementById("onbVideo");
+  if (!box) return;
+  var v = box.querySelector("video");
+  v.addEventListener("loadedmetadata", function () { box.style.display = "block"; });
 })();
 </script>
 </body>

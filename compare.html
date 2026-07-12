@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Talonmark vs AgencyAnalytics vs Swydo — Agency Reporting Compared</title>
+<meta name="description" content="Honest comparison: Talonmark writes number-checked client narratives from your exports; AgencyAnalytics and Swydo are connector dashboard/report platforms. How to choose.">
+<meta name="robots" content="index,follow">
+<link rel="icon" href="./favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./dusk.css">
+<style>
+.cmp-wrap{max-width:980px;margin:0 auto;padding:112px 24px 80px}
+.cmp-head{max-width:680px;margin-bottom:48px}
+.cmp-head h1{font-size:clamp(1.7rem,3.4vw,2.5rem);margin:0 0 14px}
+.cmp-head p{color:var(--mut);font-size:15px;line-height:1.7}
+.cmp-table{width:100%;border-collapse:collapse;border:1px solid var(--line);background:var(--card);font-size:13.5px}
+.cmp-table th,.cmp-table td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--line-soft);vertical-align:top;line-height:1.55}
+.cmp-table th{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);border-bottom:1px solid var(--line)}
+.cmp-table th.us{color:var(--signal)}
+.cmp-table td:first-child{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);white-space:nowrap}
+.cmp-table td.us{color:var(--fg)}
+.cmp-table td{color:var(--mut)}
+.cmp-scroll{overflow-x:auto;margin-bottom:56px}
+.cmp-sec{max-width:680px;margin:44px 0}
+.cmp-sec h2{font-size:19px;font-weight:600;letter-spacing:-.02em;margin:0 0 10px}
+.cmp-sec p{font-size:14.5px;color:var(--mut);line-height:1.7;margin:10px 0}
+.cmp-sec ul{margin:10px 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.cmp-sec li{display:flex;gap:10px;font-size:14.5px;color:var(--mut);line-height:1.65}
+.cmp-sec li::before{content:"\2014";color:var(--signal);flex-shrink:0}
+.cmp-sec li b{color:var(--fg);font-weight:600}
+.cmp-note{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);border-left:2px solid var(--signal);padding-left:12px;margin:28px 0;max-width:680px;line-height:1.9}
+.cmp-cta{margin-top:56px;border:1px solid var(--line);background:var(--card);padding:40px 24px;text-align:center}
+.cmp-cta .eyebrow{justify-content:center}
+.cmp-cta h2{font-size:clamp(1.3rem,2.4vw,1.7rem);margin:0 0 10px}
+.cmp-cta p{color:var(--mut);font-size:14px;max-width:52ch;margin:0 auto 22px}
+</style>
+<script>try{var t=localStorage.getItem("bf-theme");if(t==="light"||(!t&&matchMedia("(prefers-color-scheme: light)").matches))document.documentElement.setAttribute("data-theme","light")}catch(e){}</script>
+</head>
+<body>
+<header class="nav">
+  <div class="nav-in">
+    <a class="brand" href="./" aria-label="Talonmark home">
+      <img src="./falcon-bird-white.png" alt="">
+      TALONMARK <span class="sub">/ COMPARE</span>
+    </a>
+    <div class="nav-right">
+      <button class="theme-btn" id="themeToggle" aria-label="Toggle light and dark theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <a class="btn btn--primary" href="https://talon.bizfalconai.com/talonmark">Start free</a>
+    </div>
+  </div>
+</header>
+
+<main class="cmp-wrap">
+  <div class="cmp-head">
+    <div class="eyebrow">Comparison</div>
+    <h1>Talonmark vs AgencyAnalytics vs Swydo</h1>
+    <p>AgencyAnalytics and Swydo are established connector platforms — they pull live data and arrange it into dashboards and scheduled reports. Talonmark starts one step later: it <b>computes the numbers and writes the client narrative</b>, so the deliverable is a report someone already wrote, not a layout waiting for commentary.</p>
+  </div>
+  <div class="cmp-scroll"><table class="cmp-table">
+<thead><tr><th></th><th class="us">Talonmark</th><th>AgencyAnalytics</th><th>Swydo</th></tr></thead>
+<tbody><tr><td>Approach</td><td class='us'>Computes the numbers from your <b>ad platform exports</b>, then <b>writes the client narrative</b> — number-checked against the data</td><td>Connector-based client reporting and dashboard platform for agencies</td><td>Connector-based report automation for agencies</td></tr>
+<tr><td>Data source</td><td class='us'>Exports you drop in (Meta, Google Ads, GA4) — no client OAuth needed</td><td>Live connectors across many marketing platforms</td><td>Live connectors across ad platforms</td></tr>
+<tr><td>Primary output</td><td class='us'>White-label PDF with a written, number-checked narrative + batch mode for full rosters</td><td>Client dashboards and scheduled report templates</td><td>Scheduled report templates and dashboards</td></tr>
+<tr><td>Narrative</td><td class='us'>Written for you, checked against computed numbers, edit for voice</td><td>You write the commentary; templates handle layout</td><td>You write the commentary; templates handle layout</td></tr>
+<tr><td>Batch</td><td class='us'>Run the whole client roster in one pass</td><td>Per-client dashboards and schedules</td><td>Per-client schedules</td></tr>
+<tr><td>Setup</td><td class='us'>Upload exports — first report in minutes; nothing to connect</td><td>Connect each client account; broad integration catalog</td><td>Connect each client account</td></tr>
+<tr><td>Best for</td><td class='us'>Agencies that want the narrative written and checked, not just charts arranged</td><td>Agencies wanting live client dashboards across many channels</td><td>Agencies standardizing scheduled report delivery</td></tr></tbody></table></div>
+  <div class="cmp-sec">
+    <h2>When AgencyAnalytics or Swydo is the better pick</h2>
+    <ul>
+      <li>Clients expect <b>live dashboards</b> they can log into anytime.</li>
+      <li>You report across <b>many niche channels</b> and need a deep connector catalog.</li>
+      <li>Your team already has the narrative workflow down and just needs layout + scheduling.</li>
+    </ul>
+  </div>
+  <div class="cmp-sec">
+    <h2>When Talonmark is the better pick</h2>
+    <ul>
+      <li>The expensive part of your reporting is the <b>writing</b> — the account-lead hours, not the charts.</li>
+      <li>You want every sentence in the narrative <b>checked against the computed numbers</b> it cites.</li>
+      <li>You want to run the <b>whole roster in one batch</b> and edit for voice, not assemble from scratch.</li>
+      <li>You'd rather not request OAuth access to client accounts to produce a monthly PDF.</li>
+    </ul>
+  </div>
+  <div class="cmp-note">Competitor descriptions reflect their public positioning as of July 2026 — check their sites for current features and pricing. All product names and trademarks are the property of their respective owners; BizFalcon AI is not affiliated with or endorsed by them. Corrections welcome at hello@bizfalconai.com. Both are solid platforms; pick by where your hours actually go.</div>
+  <div class="cmp-cta">
+    <div class="eyebrow">No card. No demo call.</div>
+    <h2>Ship the roster before coffee</h2>
+    <p>Drop exports, get white-label PDFs with the narrative written and number-checked.</p>
+    <a class="btn btn--primary" href="https://talon.bizfalconai.com/talonmark">Start free</a>
+  </div>
+</main>
+<footer class="legal-foot" style="border-top:1px solid var(--line-soft);padding:26px 24px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)">
+  <a href="./" style="margin:0 12px">&larr; Back</a>
+  <a href="./blog/" style="margin:0 12px">Blog</a>
+</footer>
+<script>
+(function(){var b=document.getElementById("themeToggle");if(!b)return;b.addEventListener("click",function(){var r=document.documentElement,l=r.getAttribute("data-theme")==="light";if(l)r.removeAttribute("data-theme");else r.setAttribute("data-theme","light");try{localStorage.setItem("bf-theme",l?"dark":"light")}catch(e){}});})();
+</script>
+</body>
+</html>
