@@ -597,44 +597,6 @@ function drawEclipse(cv){
   c2.globalAlpha = 1;
 }
 
-function drawStarfield(cv){
-  var p = prepArt(cv); if (!p) return;
-  var c2 = p.c2, w = p.w, h = p.h, fg = p.fg, sg = p.sg;
-  var SEED = 3.91, step = 3;
-  for (var y = 0; y < h; y += step) for (var x = 0; x < w; x += step) {
-    var u = x / w, v = y / h;
-    var n = Math.pow(fbm(u * 3.4, v * 3.4, SEED), 2.6);
-    var a = n * 0.55 * (0.4 + 0.6 * hash2(x, y));
-    if (a < 0.03) continue;
-    var jx = (hash2(x + 7, y) - 0.5) * step * 1.6;
-    var jy = (hash2(x, y + 7) - 0.5) * step * 1.6;
-    c2.fillStyle = fg; c2.globalAlpha = Math.min(0.6, a);
-    c2.fillRect(x + jx, y + jy, 1.2, 1.2);
-  }
-  for (var i = 0; i < 130; i++) {
-    var sx = hash2(i, 51) * w, sy = hash2(i, 53) * h;
-    var s = hash2(i, 57);
-    c2.fillStyle = s > 0.96 ? sg : fg;
-    c2.globalAlpha = 0.25 + 0.65 * s * s;
-    var sz = s > 0.88 ? 2.2 : 1.4;
-    c2.fillRect(sx, sy, sz, sz);
-    if (s > 0.93) {
-      c2.globalAlpha = 0.25;
-      c2.fillRect(sx - 3, sy + 0.5, 8, 1); c2.fillRect(sx + 0.5, sy - 3, 1, 8);
-    }
-  }
-  var cons = [[0.26,0.22],[0.42,0.3],[0.52,0.17],[0.68,0.26],[0.78,0.4]];
-  c2.strokeStyle = fg; c2.globalAlpha = 0.2; c2.lineWidth = 1;
-  c2.beginPath();
-  cons.forEach(function(uv, i){ if (i === 0) c2.moveTo(uv[0]*w, uv[1]*h); else c2.lineTo(uv[0]*w, uv[1]*h); });
-  c2.stroke();
-  cons.forEach(function(uv, i){
-    c2.globalAlpha = 0.75; c2.fillStyle = i === 2 ? sg : fg;
-    c2.fillRect(uv[0]*w - 1.2, uv[1]*h - 1.2, 2.4, 2.4);
-  });
-  c2.globalAlpha = 1;
-}
-
 function renderArts(){
   document.querySelectorAll("[data-art]").forEach(function(cv){
     var kind = cv.getAttribute("data-art");
@@ -644,7 +606,6 @@ function renderArts(){
     else if (kind === "ascent") drawAscent(cv);
     else if (kind === "curve") drawCurveFam(cv);
     else if (kind === "eclipse") drawEclipse(cv);
-    else if (kind === "starfield") drawStarfield(cv);
     else if (kind === "dome" || kind === "diamond") ditherField(cv, diamondField, 2);
     else if (kind === "massif") drawMassifStill(cv);
     else if (kind === "image") {
