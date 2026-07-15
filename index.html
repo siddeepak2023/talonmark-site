@@ -28,6 +28,14 @@
 .rec-mini .sv{color:var(--signal);font-weight:700}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Will my client know I used ClientFalcon?", "acceptedAnswer": {"@type": "Answer", "text": "No. The PDF carries your logo and brand colors, and share links are unbranded. White-label means white-label."}}, {"@type": "Question", "name": "Can Autopilot change my campaigns without asking?", "acceptedAnswer": {"@type": "Answer", "text": "No. Autopilot queues pause/scale recommendations with the math behind each one, and every action waits for your explicit approval. Nothing touches an ad account on its own."}}, {"@type": "Question", "name": "Are the numbers in the narrative real?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — the prose is AI-drafted, but every figure is computed from your exports with real code. The narrative can't cite a number the computation didn't produce."}}, {"@type": "Question", "name": "Can I cancel anytime?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — one click from your billing page. Your plan stays active until the end of the period you paid for, and generated reports remain downloadable."}}, {"@type": "Question", "name": "Which ad platforms are supported?", "acceptedAnswer": {"@type": "Answer", "text": "Meta Ads, Google Ads, and GA4 via standard CSV exports — dropped in together for one blended report."}}]}</script>
+  <script>
+    /* Belt-and-suspenders with sw.js: drop any root-scoped worker from the old SPA-at-root setup so this page is not forwarded to /dashboard. */
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.getRegistrations().then(function (rs) {
+        rs.forEach(function (r) { if (r.scope === location.origin + "/") r.unregister(); });
+      }).catch(function () {});
+    }
+  </script>
 </head>
 <body>
 
