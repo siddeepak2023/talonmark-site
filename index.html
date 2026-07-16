@@ -196,6 +196,86 @@
 </script>
 
 
+<!-- AGENT BENCH — the work, not the count. Every card: what it watches,
+     a SAMPLE exact-change rec, and where its ledger tally accrues. -->
+<section id="bench">
+  <div class="wrap">
+    <div class="sec-row">
+      <div class="sec-head rv">
+        <div class="eyebrow">The bench</div>
+        <h2>Every agent shows its work. Every move lands in the ledger.</h2>
+        <p>Each one watches a different part of the agency loop — pitching, reporting, monitoring, retention — and proposes the exact next move. You approve every one; nothing executes on its own. Sample recommendations below; your ledger fills from your first approval.</p>
+      </div>
+    </div>
+    <div class="bench-grid rv d1">
+      <div class="bn-card">
+        <div class="bn-name">Prospect Audit</div>
+        <p class="bn-watch">Turns a prospect's ad export into a ranked issue list — evidence, first move, projected impact — and a 30-day plan for the pitch.</p>
+        <div class="bn-rec"><span class="bn-tag">Sample finding</span>
+          <span class="bn-move">Pause the bottom ad set on <b>Search — Generic</b> — $1,900/mo of spend at 0.7x ROAS · projected +$1,340/mo</span></div>
+        <div class="bn-ledger">Ledger · the audit becomes the client's baseline</div>
+      </div>
+      <div class="bn-card">
+        <div class="bn-name">Report Agent</div>
+        <p class="bn-watch">Builds the month's client report from the ad export — computed KPIs, deltas, and a written narrative you can edit before it ships.</p>
+        <div class="bn-rec"><span class="bn-tag">Sample narrative line</span>
+          <span class="bn-move">"Spend held flat while conversion value rose <b>12%</b> — the budget shift into Performance Max is paying for itself."</span></div>
+        <div class="bn-ledger">Ledger · every figure links to its math</div>
+      </div>
+      <div class="bn-card">
+        <div class="bn-name">Client Health</div>
+        <p class="bn-watch">Ranks your whole book by blended ROAS against breakeven and flags the clients drifting toward a churn conversation.</p>
+        <div class="bn-rec"><span class="bn-tag">Sample flag</span>
+          <span class="bn-move"><b>Meridian Retail</b> at 1.4x blended ROAS, below the 2.0x band — book the review before the renewal call happens without you</span></div>
+        <div class="bn-ledger">Ledger · fills from your approvals</div>
+      </div>
+      <div class="bn-card">
+        <div class="bn-name">Campaign QA</div>
+        <p class="bn-watch">Compares this period against last on every client and flags drift — spend creep, ROAS slides, budget quietly moving to losers.</p>
+        <div class="bn-rec"><span class="bn-tag">Sample flag</span>
+          <span class="bn-move">Display spend on <b>Harbor &amp; Co</b> up 31% period-over-period at falling ROAS — flagged with the rows behind it</span></div>
+        <div class="bn-ledger">Ledger · fills from your approvals</div>
+      </div>
+      <div class="bn-card">
+        <div class="bn-name">Portfolio Brief</div>
+        <p class="bn-watch">Opens your day agency-wide: which clients need you, which recommendations are waiting, what revenue is at risk this week.</p>
+        <div class="bn-rec"><span class="bn-tag">Sample brief line</span>
+          <span class="bn-move">"2 clients under breakeven · <b>4 recommendations waiting</b> · $3,100/mo of client spend flagged for review."</span></div>
+        <div class="bn-ledger">Ledger · fills from your approvals</div>
+      </div>
+    </div>
+
+    <!-- Honest calculator: pure arithmetic on the visitor's own inputs. -->
+    <div class="calc rv d2" id="hoursCalc">
+      <div>
+        <div class="calc-k">Reporting-hours calculator</div>
+        <div class="calc-row"><label for="hcClients">Clients</label><input id="hcClients" type="number" min="0" step="1" value="12" inputmode="numeric"></div>
+        <div class="calc-row"><label for="hcHours">Hours per report</label><input id="hcHours" type="number" min="0" step="0.5" value="3" inputmode="decimal"></div>
+        <div class="calc-row"><label for="hcRate">Your billable rate ($/hr)</label><input id="hcRate" type="number" min="0" step="10" value="120" inputmode="numeric"></div>
+      </div>
+      <div class="calc-out">
+        <div class="co-n" id="hcOut">$4,320/mo</div>
+        <div class="co-l">Your numbers, multiplied: clients × hours per report × your rate — the billable time monthly reporting consumes today. ClientFalcon builds the computed draft; you edit and ship it.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+(function(){
+  var ids=["hcClients","hcHours","hcRate"],out=document.getElementById("hcOut");
+  if(!out) return;
+  function calc(){
+    var c=+document.getElementById("hcClients").value||0,
+        h=+document.getElementById("hcHours").value||0,
+        r=+document.getElementById("hcRate").value||0;
+    out.textContent="$"+Math.round(c*h*r).toLocaleString()+"/mo";
+  }
+  ids.forEach(function(id){var el=document.getElementById(id);el&&el.addEventListener("input",calc);});
+  calc();
+})();
+</script>
+
+
 <!-- DEMO VIDEO — auto-running feature showcase -->
 <section id="product">
   <div class="wrap">
