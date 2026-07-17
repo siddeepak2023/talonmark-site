@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#F8F7F3" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0A0A0B" media="(prefers-color-scheme: dark)">
-<title>ClientFalcon — Client reports that write themselves</title>
+<title>ClientFalcon — The audit that wins the pitch becomes the client's baseline</title>
 <meta name="description" content="AI client reporting for marketing agencies. Ad platform exports become an AI-written narrative and a white-label PDF your client actually reads — plus Campaign Autopilot with human approval.">
 <link rel="icon" href="favicon.ico?v=11">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=11">
@@ -27,7 +27,7 @@
 .rec-mini .rt{display:flex;justify-content:space-between;font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--mut);margin-bottom:8px}
 .rec-mini .sv{color:var(--signal);font-weight:700}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Will my client know I used ClientFalcon?", "acceptedAnswer": {"@type": "Answer", "text": "No. The PDF carries your logo and brand colors, and share links are unbranded. White-label means white-label."}}, {"@type": "Question", "name": "Can Autopilot change my campaigns without asking?", "acceptedAnswer": {"@type": "Answer", "text": "No. Autopilot queues pause/scale recommendations with the math behind each one, and every action waits for your explicit approval. Nothing touches an ad account on its own."}}, {"@type": "Question", "name": "Are the numbers in the narrative real?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — the prose is AI-drafted, but every figure is computed from your exports with real code. The narrative can't cite a number the computation didn't produce."}}, {"@type": "Question", "name": "Can I cancel anytime?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — one click from your billing page. Your plan stays active until the end of the period you paid for, and generated reports remain downloadable."}}, {"@type": "Question", "name": "Which ad platforms are supported?", "acceptedAnswer": {"@type": "Answer", "text": "Meta Ads, Google Ads, and GA4 via standard CSV exports — dropped in together for one blended report."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Do I have to connect my clients' ad accounts?", "acceptedAnswer": {"@type": "Answer", "text": "No. ClientFalcon runs on the CSV exports you already pull from Meta, Google Ads, and GA4 — no OAuth, no pixel, no access to client accounts. Direct connectors are in review; until they ship, it's exports, and we say so."}}, {"@type": "Question", "name": "Will my client know I used ClientFalcon?", "acceptedAnswer": {"@type": "Answer", "text": "No. The PDF carries your logo and brand colors, and share links are unbranded. White-label means white-label."}}, {"@type": "Question", "name": "Can Autopilot change my campaigns without asking?", "acceptedAnswer": {"@type": "Answer", "text": "No. Autopilot queues pause/scale recommendations with the math behind each one, and every action waits for your explicit approval. Nothing touches an ad account on its own."}}, {"@type": "Question", "name": "Are the numbers in the narrative real?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — the prose is AI-drafted, but every figure is computed from your exports with real code. The narrative can't cite a number the computation didn't produce."}}, {"@type": "Question", "name": "Can I cancel anytime?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — one click from your billing page. Your plan stays active until the end of the period you paid for, and generated reports remain downloadable."}}, {"@type": "Question", "name": "Which ad platforms are supported?", "acceptedAnswer": {"@type": "Answer", "text": "Meta Ads, Google Ads, and GA4 via standard CSV exports — dropped in together for one blended report."}}]}</script>
   <script>
     /* Belt-and-suspenders with sw.js: drop any root-scoped worker from the old SPA-at-root setup so this page is not forwarded to /dashboard. */
     if ("serviceWorker" in navigator) {
@@ -38,12 +38,12 @@
   </script>
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://client.bizfalconai.com/">
-<meta property="og:title" content="ClientFalcon — Client reports that write themselves">
-<meta property="og:description" content="AI client reporting for marketing agencies. Ad platform exports become an AI-written narrative and a white-label PDF your client actually reads — plus Campaign Autopilot with human approval.">
+<meta property="og:title" content="ClientFalcon — The audit that wins the pitch becomes the client's baseline">
+<meta property="og:description" content="Drop a prospect's ad export and ClientFalcon builds the ranked-findings audit — evidence, exact fixes, projected impact, a 30-day plan — in about a minute. The day they sign, that audit becomes their live baseline, and month-two reporting shows receipts against the pitch.">
 <meta property="og:image" content="https://client.bizfalconai.com/apple-touch-icon.png">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ClientFalcon — Client reports that write themselves">
-<meta name="twitter:description" content="AI client reporting for marketing agencies. Ad platform exports become an AI-written narrative and a white-label PDF your client actually reads — plus Campaign Autopilot with human approval.">
+<meta name="twitter:title" content="ClientFalcon — The audit that wins the pitch becomes the client's baseline">
+<meta name="twitter:description" content="Drop a prospect's ad export and ClientFalcon builds the ranked-findings audit — evidence, exact fixes, projected impact, a 30-day plan — in about a minute. The day they sign, that audit becomes their live baseline, and month-two reporting shows receipts against the pitch.">
 <meta name="twitter:image" content="https://client.bizfalconai.com/apple-touch-icon.png">
 </head>
 <body>
@@ -80,8 +80,8 @@
       <div>
         <div class="eyebrow hero-icp">Built for agencies &amp; freelancers</div>
         <span class="chip hero-chip"><i class="pulse"></i>NEW — CAMPAIGN AUTOPILOT · HUMAN-GATED</span>
-        <h1>Client reports that <span class="accent-serif">write themselves</span>.</h1>
-        <p class="hero-sub">Drop in your ad platform exports. ClientFalcon computes the numbers, <strong>writes the narrative, and ships a white-label PDF</strong> with your logo on it — before your account manager finishes coffee.</p>
+        <h1>The audit that wins the pitch <span class="accent-serif">becomes the client's baseline</span>.</h1>
+        <p class="hero-sub">Drop a prospect's ad export and ClientFalcon builds the ranked-findings audit — <strong>evidence, exact fixes, projected impact, a 30-day plan</strong> — in about a minute. The day they sign, that audit becomes their live baseline, and month-two reporting shows receipts against the pitch.</p>
         <div class="hero-ctas">
           <a class="btn btn--primary" href="/auth?mode=signup">Start free</a>
           <a class="btn btn--ghost" href="/dashboard/new?demo=1">Try the instant demo — no signup</a>
@@ -663,7 +663,7 @@
       <div>
         <div class="apt"><i class="pulse" style="width:6px;height:6px;border-radius:50%;background:var(--signal);display:inline-block"></i>CAMPAIGN AUTOPILOT · NEW</div>
         <h3>ClientFalcon Autopilot</h3>
-        <p>Everything in Studio, plus the agentic layer: the recommendation feed across every client, one-click approvals, live Meta + Google Ads signals, safety guardrails, and a full audit log. Turn every account review into action without leaving ClientFalcon.</p>
+        <p>Everything in Studio, plus the agentic layer: the recommendation feed across every client, one-click approvals, playbooks that run on your Meta + Google Ads exports, safety guardrails, and a full audit log. Turn every account review into action without leaving ClientFalcon.</p>
       </div>
       <div class="apr">
         <div class="apprice">$49<span>/mo</span></div>
@@ -683,6 +683,10 @@
     </div>
     <div class="faq-grid rv">
     <div class="faq">
+      <details>
+        <summary>Do I have to connect my clients' ad accounts?</summary>
+        <div class="a">No. ClientFalcon runs on the CSV exports you already pull from Meta, Google Ads, and GA4 — no OAuth, no pixel, no access to client accounts. Direct connectors are in review; until they ship, it's exports, and we say so.</div>
+      </details>
       <details>
         <summary>Will my client know I used ClientFalcon?</summary>
         <div class="a">No. The PDF carries your logo and brand colors, and share links are unbranded. White-label means white-label.</div>
@@ -763,7 +767,7 @@
     </div>
     <div class="foot-base">
       <span>© 2026 BizFalcon AI. All rights reserved.</span>
-      <span class="foot-sig">REPORTS THAT WRITE THEMSELVES</span>
+      <span class="foot-sig">THE PITCH BECOMES THE BASELINE</span>
     </div>
   </div>
 </footer>
