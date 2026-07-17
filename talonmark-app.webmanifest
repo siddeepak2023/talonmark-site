@@ -1,0 +1,20 @@
+{
+  "name": "ClientFalcon — Agency Client Analytics",
+  "short_name": "ClientFalcon",
+  "description": "The audit that wins the pitch becomes the client's baseline. Runs on the exports you already have. By BizFalcon AI.",
+  "theme_color": "#333331",
+  "background_color": "#0A0A0B",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "start_url": "/dashboard?source=pwa",
+  "scope": "/",
+  "lang": "en",
+  "id": "/clientfalcon-app",
+  "icons": [
+    { "src": "/app/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/app/icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/app/icons/icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "categories": ["business", "productivity", "marketing"],
+  "prefer_related_applications": false
+}
