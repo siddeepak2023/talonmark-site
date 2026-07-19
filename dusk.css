@@ -1081,3 +1081,32 @@ body{background:url(textures/halftone-bone.png) repeat fixed 0 0/720px 720px,var
 @media(hover:hover){.nav-dd:hover .nav-dd-menu{display:flex}}
 .nav-dd-menu a{display:block;padding:9px 12px;font-family:"Instrument Sans","Hanken Grotesk",sans-serif;font-size:13px;font-weight:500;letter-spacing:.01em;text-transform:none;color:var(--mut);transition:color .15s ease,background .15s ease}
 .nav-dd-menu a:hover{color:var(--signal);background:var(--bg2)}
+
+/* ===== DUSK interlude band + sentinel bust + ledger sphere (ported from PF) ===== */
+.interlude{
+  background:url(textures/halftone-bone.png) repeat fixed 0 0/720px 720px,#0A0A0B;padding:76px 0;
+  --bg:#0A0A0B;--bg2:#111110;--card:#141413;--fg:#EDECE8;
+  --mut:rgba(237,236,232,.55);--line:rgba(237,236,232,.16);--line-soft:rgba(237,236,232,.09);--dot:rgba(237,236,232,.10);
+  color:var(--fg);
+}
+:root:not([data-theme="light"]) .interlude{
+  background:url(textures/halftone-ink.png) repeat fixed 0 0/720px 720px,#F8F7F3;
+  --bg:#F8F7F3;--bg2:#FFFFFF;--card:#FFFFFF;--fg:#111110;
+  --mut:rgba(17,17,16,.55);--line:rgba(17,17,16,.16);--line-soft:rgba(17,17,16,.09);--dot:rgba(17,17,16,.10);
+}
+.interlude .sec-head h2,.interlude h3{color:var(--fg)}
+.interlude .sec-head p{color:var(--mut)}
+.feed-duo{position:relative;margin-bottom:24px}
+@media(min-width:861px){#bench .sec-head{max-width:min(640px,50%);margin-bottom:36px}}
+.feed-duo .rec-mock{margin:0}
+/* head = verbatim drawBust at 430x340 native, CSS-scaled as one bitmap (same
+   picture, not re-rendered). Absolute, anchored bottom-right, scales up-left. */
+.art--bust{position:absolute;right:-64px;bottom:35px;width:430px;height:340px;
+  transform:scale(1.12) !important;transform-origin:100% 100%;image-rendering:auto;pointer-events:none}
+@media(max-width:1120px){.art--bust{transform:scale(1.05) !important;right:-24px}}
+.art--oort{width:320px;height:320px;display:block;justify-self:end;align-self:center;transform:translateY(-35px)}
+@media(max-width:860px){
+  .feed-duo{position:static}
+  .art--bust{position:static;transform:scale(1) !important;width:min(360px,84%);height:auto;aspect-ratio:430/340;margin:8px auto 0}
+  .art--oort{width:240px;height:240px;justify-self:center;margin-top:8px}
+}
