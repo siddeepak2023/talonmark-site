@@ -120,9 +120,9 @@
     </div>
     <!-- onboarding walkthrough video — real capture of the live report builder on sample data -->
     <div class="onb-video rv" id="onbVideo">
-      <div class="shot-bar"><span>clientfalcon — real product session</span><span style="margin-left:auto">SAMPLE DATA · REAL SESSION · 44 SEC</span></div>
-      <video src="./media/onboarding.mp4" poster="./media/onboarding-poster.jpg" controls muted playsinline preload="metadata"
-             aria-label="ClientFalcon walkthrough on a sample client: prospect growth audit with findings, recommendations, test plan, computed KPIs and channel screener"></video>
+      <div class="shot-bar"><span class="dots"><i></i><i></i><i></i></span><span>clientfalcon — live product session</span><span style="margin-left:auto">SAMPLE DATA · REAL SESSION · 50 SEC</span></div>
+      <video src="./media/walkthrough-cf.mp4" poster="./media/walkthrough-cf-poster.jpg" autoplay muted loop playsinline preload="metadata"
+             aria-label="ClientFalcon walkthrough on sample data: prospect audit, ranked findings, recommendations, test plan, verified metric formulas, channel screener, white-label PDF and batch reports"></video>
     </div>
     <div class="rv d1">
       <div class="demo-tabs" id="demoTabs" role="tablist" aria-label="Demo scenes"></div>
@@ -835,7 +835,7 @@
   </div>
 </footer>
 
-<script src="./dusk-art.js"></script>
+<script src="./dusk-art.js?v=20260722"></script>
 <script>
 (function(){
 "use strict";
@@ -898,12 +898,18 @@ window.DUSK.demoRunner({
 })();
 </script>
 <script>
-// Reveal the onboarding video frame only when the file actually exists.
+// Reveal the walkthrough frame when the file exists; run it like a live screen:
+// autoplay muted loop, playing only while on screen, no controls, poster under reduced motion.
 (function () {
   var box = document.getElementById("onbVideo");
   if (!box) return;
   var v = box.querySelector("video");
+  var rm = matchMedia("(prefers-reduced-motion: reduce)").matches;
   v.addEventListener("loadedmetadata", function () { box.style.display = "block"; });
+  if (rm) { v.removeAttribute("autoplay"); v.pause(); return; }
+  new IntersectionObserver(function (en) {
+    en[0].isIntersecting ? v.play().catch(function(){}) : v.pause();
+  }, { threshold: 0.25 }).observe(box);
 })();
 </script>
 <script>
