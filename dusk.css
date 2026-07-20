@@ -271,6 +271,8 @@ section{padding:120px 0;border-top:1px solid var(--line-soft);position:relative}
 .plan{border:1px solid var(--line);background:var(--card);padding:30px 26px;display:flex;flex-direction:column;position:relative;transition:border-color .25s ease}
 .plan:hover{border-color:var(--fg)}
 .plan.hot{border-color:var(--fg)}
+.plan--addon{border-style:dashed;background:color-mix(in srgb,var(--signal) 3%,var(--card))}
+.plan-flag--addon{background:var(--bg2);color:var(--signal);border:1px solid color-mix(in srgb,var(--signal) 40%,transparent)}
 .plan-flag{
   position:absolute;top:-1px;right:-1px;
   font-family:"JetBrains Mono",monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;
@@ -1188,6 +1190,10 @@ body{background:url(textures/halftone-bone.png) repeat fixed 0 0/720px 720px,var
   padding:clamp(14px,2vw,22px);min-height:430px;display:flex;flex-direction:column;justify-content:center}
 .clip-stage.show{opacity:1;transform:none}
 .clip-stage .sc-panel{padding:clamp(16px,2.2vw,26px);padding-top:38px}
+/* live product embed (real /teardown running in an iframe) */
+.live-shot{overflow:hidden}
+.live-frame{display:block;width:100%;height:min(72vh,640px);border:0;background:var(--bg)}
+@media(max-width:700px){.live-frame{height:78vh}}
 .clip-stage .sc-kpis{margin-bottom:12px}
 .clip-video{width:100%;display:block;border-radius:10px;border:1px solid var(--line-soft);background:#000}
 /* compact ledger rail for the clip scene (mirrors .lg-frame, non-interactive) */
