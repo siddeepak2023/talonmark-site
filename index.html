@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600&family=Inter+Tight:wght@600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./dusk.css?v=20260735">
+<link rel="stylesheet" href="./dusk.css?v=20260736">
 <style>
 .hero-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:center}
 .pdf-row{display:flex;gap:16px;align-items:flex-start;margin-bottom:16px}
@@ -789,7 +789,7 @@
   </div>
 </footer>
 
-<script src="./dusk-art.js?v=20260735"></script>
+<script src="./dusk-art.js?v=20260736"></script>
 <script>
 (function(){
 "use strict";
@@ -809,12 +809,13 @@ window.DUSK.clipPlayer({
       body: '<div class="sc-panel" aria-label="Prospect audit findings (sample data)">' +
         '<span class="sc-tag">PROSPECT AUDIT · SAMPLE EXPORT</span>' +
         '<div class="sc-kpis">' +
-          '<div class="sc-card sc-kpi sc-kpi--hero"><div class="k-label">CPA · 6-period trend <span class="sc-delta loss up">37%</span></div><div class="k-val">$23.24 → $31.94</div>' +
+          '<div class="sc-card sc-kpi sc-kpi--hero"><div class="k-label">CPA · prior → current <span class="sc-delta loss up">37%</span></div><div class="k-val">$23.24 → $31.94</div>' +
             '<svg class="sc-spark" viewBox="0 0 200 44" preserveAspectRatio="none" aria-hidden="true">' +
-              '<path class="sp-line loss" d="M2,36 L35,32 L68,30 L101,24 L134,20 L167,12 L198,6" data-draw="0" data-len="230" style="stroke-dasharray:230;stroke-dashoffset:230"></path>' +
-              '<circle class="sp-dot loss" cx="198" cy="6" r="3"></circle>' +
+              '<path class="sp-line loss" d="M4,34 L196,10" data-draw="0" data-len="200" style="stroke-dasharray:200;stroke-dashoffset:200"></path>' +
+              '<circle class="sp-dot loss" cx="4" cy="34" r="2.5"></circle>' +
+              '<circle class="sp-dot loss" cx="196" cy="10" r="3"></circle>' +
             '</svg>' +
-            '<div class="k-formula"><b>=</b> spend / conversions · rising period-over-period</div></div>' +
+            '<div class="k-formula"><b>=</b> spend / conversions · the two periods in this export</div></div>' +
           '<div class="sc-card sc-kpi"><div class="k-label">Projected recovery, all findings</div><div class="k-val">~$<b data-count="18447">0</b>/mo</div><div class="k-formula"><b>=</b> Σ projected impact · 4 ranked issues</div></div>' +
           '<div class="sc-card sc-kpi"><div class="k-label">Budget parked on the weak channel</div><div class="k-val">2.6×</div><div class="k-formula"><b>=</b> Google ROAS 6.72 / Meta ROAS 2.62</div></div>' +
         '</div>' +
@@ -857,7 +858,7 @@ window.DUSK.clipPlayer({
     {
       label: "LEDGER", cap: "AUDIT BECOMES BASELINE — NEXT MONTH IS SCORED AGAINST IT",
       hold: 5200,
-      foot: { left: "SAMPLE LEDGER · AUDIT → BASELINE", cta: { label: "SEE HOW SCORING WORKS ▸", href: "/auth?mode=signup" } },
+      foot: { left: "ILLUSTRATIVE — SCORING STARTS AFTER YOUR FIRST BASELINE", cta: { label: "SEE HOW SCORING WORKS ▸", href: "/auth?mode=signup" } },
       body: '<div class="clip-lg" aria-label="Audit-to-baseline continuity ledger (sample data)">' +
         '<div class="lgc-rail">' +
           '<span class="lgc-node done"><i></i><s>Audited</s></span>' +
@@ -868,7 +869,7 @@ window.DUSK.clipPlayer({
           '<span class="lgc-node on"><i></i><s>Scored</s></span>' +
         '</div>' +
         '<div class="lgc-body">The audit\u2019s numbers become the locked baseline. Thirty days after the reallocation ships, the report compares what was promised to what the channels actually did — <span class="lgm">projected +$6,765/mo</span> vs <span class="lgm">measured +$6,214/mo</span>.</div>' +
-        '<div class="lgc-tally"><span>LEDGER: PROJECTED +$<b data-count="6765">0</b></span><span>MEASURED +$<b data-count="6214">0</b></span><span>ACCURACY <b data-count="91" data-suffix="%">0</b></span></div>' +
+        '<div class="lgc-tally"><span>EXAMPLE ENTRY: PROJECTED +$<b data-count="6765">0</b></span><span>MEASURED +$<b data-count="6214">0</b></span><span>ACCURACY <b data-count="91" data-suffix="%">0</b></span></div>' +
         '</div>',
       ins: "<b>Retainers renew on receipts</b> — every audit claim is scored against the locked baseline, and the client sees the score."
     },
