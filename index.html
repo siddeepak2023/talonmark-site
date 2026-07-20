@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600&family=Inter+Tight:wght@600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./dusk.css?v=20260733">
+<link rel="stylesheet" href="./dusk.css?v=20260735">
 <style>
 .hero-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:center}
 .pdf-row{display:flex;gap:16px;align-items:flex-start;margin-bottom:16px}
@@ -789,7 +789,7 @@
   </div>
 </footer>
 
-<script src="./dusk-art.js?v=20260733"></script>
+<script src="./dusk-art.js?v=20260735"></script>
 <script>
 (function(){
 "use strict";
@@ -809,8 +809,13 @@ window.DUSK.clipPlayer({
       body: '<div class="sc-panel" aria-label="Prospect audit findings (sample data)">' +
         '<span class="sc-tag">PROSPECT AUDIT · SAMPLE EXPORT</span>' +
         '<div class="sc-kpis">' +
-          '<div class="sc-card sc-kpi sc-kpi--hero"><div class="k-label">Projected recovery, all findings</div><div class="k-val">~$<b data-count="18447">0</b>/mo</div><div class="k-formula"><b>=</b> Σ projected impact · 4 ranked issues</div></div>' +
-          '<div class="sc-card sc-kpi"><div class="k-label">CPA, period over period <span class="sc-delta down neg">37%</span></div><div class="k-val">$23.24 → $31.94</div><div class="k-formula"><b>=</b> spend / conversions · both periods</div></div>' +
+          '<div class="sc-card sc-kpi sc-kpi--hero"><div class="k-label">CPA · 6-period trend <span class="sc-delta loss up">37%</span></div><div class="k-val">$23.24 → $31.94</div>' +
+            '<svg class="sc-spark" viewBox="0 0 200 44" preserveAspectRatio="none" aria-hidden="true">' +
+              '<path class="sp-line loss" d="M2,36 L35,32 L68,30 L101,24 L134,20 L167,12 L198,6" data-draw="0" data-len="230" style="stroke-dasharray:230;stroke-dashoffset:230"></path>' +
+              '<circle class="sp-dot loss" cx="198" cy="6" r="3"></circle>' +
+            '</svg>' +
+            '<div class="k-formula"><b>=</b> spend / conversions · rising period-over-period</div></div>' +
+          '<div class="sc-card sc-kpi"><div class="k-label">Projected recovery, all findings</div><div class="k-val">~$<b data-count="18447">0</b>/mo</div><div class="k-formula"><b>=</b> Σ projected impact · 4 ranked issues</div></div>' +
           '<div class="sc-card sc-kpi"><div class="k-label">Budget parked on the weak channel</div><div class="k-val">2.6×</div><div class="k-formula"><b>=</b> Google ROAS 6.72 / Meta ROAS 2.62</div></div>' +
         '</div>' +
         '<table class="sc-table"><thead><tr><th>#</th><th>Finding</th><th class="num">Projected</th></tr></thead><tbody>' +
