@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600&family=Inter+Tight:wght@600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./dusk.css?v=20260731">
+<link rel="stylesheet" href="./dusk.css?v=20260733">
 <style>
 .hero-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:center}
 .pdf-row{display:flex;gap:16px;align-items:flex-start;margin-bottom:16px}
@@ -63,7 +63,6 @@
         <button class="nav-dd-btn" type="button" aria-haspopup="true" aria-expanded="false">Product <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></button>
         <div class="nav-dd-menu" role="menu">
           <a href="#demo" role="menuitem">Live demo</a>
-          <a href="#gallery" role="menuitem">Screens</a>
           <a href="#bench" role="menuitem">Agent bench</a>
           <a href="#ledger" role="menuitem">The ledger</a>
           <a href="#engine" role="menuitem">Engine</a>
@@ -115,29 +114,19 @@
       <div class="sec-head rv" data-dock>
         <div class="eyebrow">See it in action</div>
         <h2>Watch a report build itself.</h2>
-        <p>Four features on a sample Meta campaigns export — the flow and report structure are the real product. Click a scene or let it roll.</p>
+        <p>Five scenes on a sample Meta campaigns export — the numbers are sample, the structure is the real product. Click a scene or let it roll.</p>
       </div>
-    </div>
-    <!-- onboarding walkthrough video — real capture of the live report builder on sample data -->
-    <div class="onb-video rv" id="onbVideo">
-      <div class="shot-bar"><span class="dots"><i></i><i></i><i></i></span><span>clientfalcon — live product session</span><span style="margin-left:auto">SAMPLE DATA · REAL SESSION · 50 SEC</span></div>
-      <video src="./media/walkthrough-cf.mp4" poster="./media/walkthrough-cf-poster.jpg" autoplay muted loop playsinline preload="metadata"
-             aria-label="ClientFalcon walkthrough on sample data: prospect audit, ranked findings, recommendations, test plan, verified metric formulas, channel screener, white-label PDF and batch reports"></video>
     </div>
     <div class="rv d1">
       <div class="demo-tabs" id="demoTabs" role="tablist" aria-label="Demo scenes"></div>
       <div class="shot" id="demoRoot">
-        <div class="shot-bar"><span class="dots"><i></i><i></i><i></i></span><span>clientfalcon — sample session</span></div>
-        <div class="shot-body">
-          <div class="demo-q" id="demoQ"></div>
-          <div class="demo-code" id="demoCode"></div>
-          <div class="demo-tiles" id="demoTiles"></div>
-          <div class="demo-ins" id="demoIns" aria-live="polite"></div>
-        </div>
-        <div class="shot-foot"><span>COMPUTED FROM YOUR EXPORTS</span><a href="/auth?mode=signup">RUN IT ON YOUR CLIENTS ▸</a></div>
+        <div class="shot-bar"><span class="dots"><i></i><i></i><i></i></span><span>clientfalcon — sample session</span><span style="margin-left:auto">SAMPLE DATA</span></div>
+        <div class="clip-stage" id="clipStage"></div>
+        <div class="shot-foot"><span id="clipFootLeft">COMPUTED FROM YOUR EXPORTS</span><a id="clipFootCta" href="/auth?mode=signup">RUN IT ON YOUR CLIENTS ▸</a></div>
       </div>
       <div class="demo-prog" id="demoProg" aria-hidden="true"><i></i></div>
       <div class="demo-cap" id="demoCap" aria-live="polite"></div>
+      <div class="demo-ins" id="demoIns" aria-live="polite"></div>
     </div>
   </div>
 </section>
@@ -303,64 +292,7 @@
 </script>
 
 
-<!-- PRODUCT GALLERY — real screenshots from the live product on SAMPLE data.
-     Audit leads: the prospect-audit→baseline continuity is the moat, the report
-     builder is a feature. -->
-<section id="gallery">
-  <div class="wrap">
-    <div class="sec-row">
-      <div class="sec-head rv">
-        <div class="eyebrow">Real screens</div>
-        <h2>Every screen below is live software.</h2>
-        <p>Captured from the live app running SAMPLE ad exports — every number on screen was computed, not designed. The audit that wins the pitch becomes the client’s baseline on day one.</p>
-      </div>
-    </div>
-    <div class="rv d1">
-      <div class="demo-tabs" id="galTabs" role="tablist" aria-label="Product surfaces"></div>
-      <figure class="shot gal-shot" style="margin:0">
-        <div class="shot-bar"><span class="dots"><i></i><i></i><i></i></span><span id="galCap">clientfalcon — sample data</span><span style="margin-left:auto">SAMPLE DATA · LIVE PRODUCT</span></div>
-        <img id="galImg" class="gal-img" src="./shots/audit.png" alt="" loading="lazy" decoding="async">
-        <div class="shot-foot"><span>CAPTURED FROM THE RUNNING APP</span><a href="/dashboard/new?demo=1">OPEN THIS SCREEN LIVE ▸</a></div>
-      </figure>
-      <div class="demo-prog" aria-hidden="true"><i id="galProg"></i></div>
-    </div>
-  </div>
-</section>
-<script>
-(function(){
-  var scenes=[
-    {t:"Prospect audit",cap:"clientfalcon — prospect audit (the pitch that becomes the baseline)",img:"./shots/audit.png",alt:"ClientFalcon prospect audit: evidence-backed findings with projected monthly gains computed from a sample ad export"},
-    {t:"Portfolio health",cap:"clientfalcon — portfolio brief on sample client exports (who needs you today)",img:"./shots/portfolio-brief.png",alt:"ClientFalcon portfolio brief: five sample clients ranked by explainable health score, revenue at risk, and a track-in-agent-feed action"},
-    {t:"Report builder",cap:"clientfalcon — client report builder",img:"./shots/report-builder.png",alt:"ClientFalcon report builder generating a branded client report from a sample ad export"}
-  ];
-  var tabs=document.getElementById("galTabs"),img=document.getElementById("galImg"),
-      cap=document.getElementById("galCap"),prog=document.getElementById("galProg");
-  if(!tabs||!img) return;
-  var still=matchMedia("(prefers-reduced-motion:reduce)").matches,cur=0,timer=null,DUR=5200,hover=false;
-  scenes.forEach(function(s,i){
-    var b=document.createElement("button");
-    b.className="demo-tab";b.type="button";b.setAttribute("role","tab");b.textContent=s.t;
-    b.addEventListener("click",function(){clearTimeout(timer);show(i,false);loop();});
-    tabs.appendChild(b);
-  });
-  var btns=tabs.querySelectorAll(".demo-tab");
-  function show(i,auto){
-    cur=i;
-    btns.forEach(function(b,j){b.classList.toggle("on",j===i);b.setAttribute("aria-selected",j===i?"true":"false");});
-    img.src=scenes[i].img;img.alt=scenes[i].alt;cap.textContent=scenes[i].cap;
-    if(prog){prog.style.transitionDuration="0ms";prog.style.transitionProperty="width";prog.style.width="0";
-      if(auto&&!still){requestAnimationFrame(function(){requestAnimationFrame(function(){prog.style.transitionDuration=DUR+"ms";prog.style.transitionTimingFunction="linear";prog.style.width="100%";});});}}
-  }
-  function loop(){clearTimeout(timer);if(still)return;timer=setTimeout(function(){if(!hover){show((cur+1)%scenes.length,true);}loop();},DUR);}
-  var fig=document.querySelector(".gal-shot");
-  if(fig){fig.addEventListener("mouseenter",function(){hover=true;});fig.addEventListener("mouseleave",function(){hover=false;});}
-  var io=new IntersectionObserver(function(en){
-    en.forEach(function(e){if(e.isIntersecting){if(!timer){show(0,true);loop();}}else{clearTimeout(timer);timer=null;}});
-  },{threshold:.3});
-  io.observe(document.getElementById("gallery"));
-  show(0,false);
-})();
-</script>
+
 
 
 <!-- DEMO VIDEO — auto-running feature showcase -->
@@ -857,83 +789,97 @@
   </div>
 </footer>
 
-<script src="./dusk-art.js?v=20260731"></script>
+<script src="./dusk-art.js?v=20260733"></script>
 <script>
 (function(){
 "use strict";
-window.DUSK.demoRunner({
+window.DUSK.clipPlayer({
   root: document.getElementById("demoRoot"),
+  stageEl: document.getElementById("clipStage"),
   tabsEl: document.getElementById("demoTabs"),
-  qEl: document.getElementById("demoQ"),
-  codeEl: document.getElementById("demoCode"),
-  tilesEl: document.getElementById("demoTiles"),
   capEl: document.getElementById("demoCap"),
   progEl: document.getElementById("demoProg"),
   insEl: document.getElementById("demoIns"),
-  scenarios: [
+  footLeftEl: document.getElementById("clipFootLeft"),
+  footCtaEl: document.getElementById("clipFootCta"),
+  clips: [
     {
-      label: "REPORT", cap: "WHITE-LABEL PDF — YOUR LOGO, COMPUTED NUMBERS",
-      q: "build the monthly report for Acme Co",
-      code: 'data = load(["meta.csv", "google.csv"])\nkpis = compute(data)\npdf = report(kpis, brand="acme")',
-      tiles: [
-        { v: 6, label: "Pages, branded" },
-        { v: 12, label: "Charts, computed" },
-        { v: 12, suffix: " min", label: "Export → client-ready" }
-      ],
-      ins: "<b>Twelve minutes from export to client-ready</b> — six branded pages, every number computed from the CSV."
+      label: "AUDIT", cap: "PROSPECT AUDIT — WIN THE PITCH WITH THEIR OWN DATA",
+      foot: { left: "SAMPLE DATA · REAL STRUCTURE", cta: { label: "RUN IT ON YOUR CLIENTS ▸", href: "/auth?mode=signup" } },
+      body: '<div class="sc-panel" aria-label="Prospect audit findings (sample data)">' +
+        '<span class="sc-tag">PROSPECT AUDIT · SAMPLE EXPORT</span>' +
+        '<div class="sc-kpis">' +
+          '<div class="sc-card sc-kpi sc-kpi--hero"><div class="k-label">Projected recovery, all findings</div><div class="k-val">~$<b data-count="18447">0</b>/mo</div><div class="k-formula"><b>=</b> Σ projected impact · 4 ranked issues</div></div>' +
+          '<div class="sc-card sc-kpi"><div class="k-label">CPA, period over period <span class="sc-delta down neg">37%</span></div><div class="k-val">$23.24 → $31.94</div><div class="k-formula"><b>=</b> spend / conversions · both periods</div></div>' +
+          '<div class="sc-card sc-kpi"><div class="k-label">Budget parked on the weak channel</div><div class="k-val">2.6×</div><div class="k-formula"><b>=</b> Google ROAS 6.72 / Meta ROAS 2.62</div></div>' +
+        '</div>' +
+        '<table class="sc-table"><thead><tr><th>#</th><th>Finding</th><th class="num">Projected</th></tr></thead><tbody>' +
+        '<tr><td>1</td><td>Pause the bleeding channel, redeploy budget</td><td class="num">~$8,985/mo</td></tr>' +
+        '<tr><td>2</td><td class="sig">Budget parked on Meta while Google outperforms 2.6-to-1</td><td class="num">~$6,765/mo</td></tr>' +
+        '<tr><td>3</td><td>CPA climbing — audit the campaigns driving it up</td><td class="num">~$2,697/mo</td></tr>' +
+        '</tbody></table></div>',
+      ins: "<b>The pitch writes itself</b> — ranked issues from the prospect\u2019s own export, dollars attached, before the first call."
     },
     {
-      label: "NARRATIVE", cap: "AI-WRITTEN NARRATIVE — NO HALLUCINATED ROAS",
-      q: "write the executive summary",
-      code: 'facts = kpis.verified()\nsummary = narrate(facts)\nassert summary.cites_only(facts)',
-      tiles: [
-        { static: "4.2×", label: "Blended ROAS, computed" },
-        { v: 12400, prefix: "$", label: "Spend analyzed" },
-        { static: "0", label: "Uncited numbers allowed" }
-      ],
-      ins: "<b>The prose can only cite computed facts</b> — if the number isn't in the data, it can't be in the summary."
+      label: "RECS + FORMULAS", cap: "EVERY METRIC CARRIES ITS FORMULA — CLIENTS CAN AUDIT IT",
+      foot: { left: "SAMPLE DATA · REAL STRUCTURE", cta: { label: "RUN IT ON YOUR CLIENTS ▸", href: "/auth?mode=signup" } },
+      body: '<div class="sc-panel" aria-label="Ranked recommendations with verified formulas (sample data)">' +
+        '<span class="sc-tag">RECOMMENDED MOVES · SAMPLE EXPORT</span>' +
+        '<div class="sc-act"><span class="a-pri">P1</span><p><b>Pause Pinterest week one</b> — redeploy its budget to the efficient channel</p><span class="a-imp">+$<b data-count="8985">0</b>/mo</span></div>' +
+        '<div class="sc-act"><span class="a-pri">P2</span><p><b>Reallocate 30% of Meta budget to Google Ads</b> — 6.72x vs 2.62x on the same dollars</p><span class="a-imp">+$<b data-count="6765">0</b>/mo</span></div>' +
+        '<div class="sc-act"><span class="a-pri">P3</span><p><b>Cap bids until CPA returns to prior rate</b> — tighten audiences, exclude converters</p><span class="a-imp">+$<b data-count="2697">0</b>/mo</span></div>' +
+        '<div class="sc-bench" style="margin-top:14px">' +
+          '<div class="b-label"><span>ROAS — <b>Google 6.72x</b></span><span>= revenue ÷ spend ✓</span></div>' +
+          '<div class="b-track"><span class="b-you" data-grow="84%"></span></div>' +
+          '<div class="b-label"><span>ROAS — <b>Meta 2.62x</b></span><span>same formula, same dollars</span></div>' +
+          '<div class="b-track"><span class="b-you" data-grow="33%"></span></div>' +
+        '</div></div>',
+      ins: "<b>Formulas ship with every figure</b> — when the client asks \u201cwhere did this number come from,\u201d the answer is attached."
     },
     {
-      label: "AUTOPILOT", cap: "CAMPAIGN AUTOPILOT — EVERY ACTION WAITS FOR YOU",
-      q: "anything bleeding this week?",
-      code: 'cpa = spend / conversions\nover = cpa[cpa > target * 2]\nrec = playbook("AD-SPEND-03")',
-      tiles: [
-        { v: 1, label: "Ad set over target", neg: true },
-        { v: 1180, prefix: "$", suffix: "/mo", label: "Est. save if paused" },
-        { static: "QUEUED", label: "Rec → your approval" }
-      ],
-      ins: "<b>One ad set is bleeding</b> — CPA 2.4× target for six days. Pause is queued; nothing touches the account without you."
+      label: "WHITE-LABEL PDF", cap: "YOUR BRAND ON THE DELIVERABLE — NOT OURS",
+      foot: { left: "SAMPLE DATA · REAL STRUCTURE", cta: { label: "RUN IT ON YOUR CLIENTS ▸", href: "/auth?mode=signup" } },
+      body: '<div class="sc-panel" aria-label="White-label report deliverable (sample)">' +
+        '<span class="sc-tag">DELIVERABLE · WHITE-LABEL</span>' +
+        '<div class="sc-kpis">' +
+          '<div class="sc-card sc-kpi sc-kpi--hero"><div class="k-label">Summit Gear Co — Marketing audit</div><div class="k-val">YOUR LOGO. YOUR NAME.</div><div class="k-formula"><b>=</b> agency branding on every page · no ClientFalcon marks</div></div>' +
+          '<div class="sc-card sc-kpi"><div class="k-label">Pages</div><div class="k-val"><b data-count="9">0</b></div><div class="k-formula"><b>=</b> findings · plan · appendix with formulas</div></div>' +
+          '<div class="sc-card sc-kpi"><div class="k-label">Time to deliverable</div><div class="k-val">~<b data-count="4">0</b> min</div><div class="k-formula"><b>=</b> export in → branded PDF out</div></div>' +
+        '</div>' +
+        '<div class="sc-formula sc-verified">30-day plan included — every step traces to a ranked finding</div></div>',
+      ins: "<b>The deliverable is yours</b> — branded PDF the client keeps, with the 30-day plan and the math in the appendix."
     },
     {
-      label: "BATCH", cap: "BATCH MODE — THE WHOLE ROSTER IN ONE SITTING",
-      q: "run reports for all clients",
-      code: 'for client in roster:\n    report(client, month="june")\n# 10 branded PDFs, one command',
-      tiles: [
-        { v: 10, label: "Clients processed" },
-        { v: 10, label: "Branded PDFs" },
-        { v: 30, prefix: "~", suffix: " hrs", label: "AM hours/mo, at 3 hrs × 10 clients" }
-      ],
-      ins: "<b>The whole roster in one sitting</b> — ten clients, ten branded PDFs, one command."
+      label: "LEDGER", cap: "AUDIT BECOMES BASELINE — NEXT MONTH IS SCORED AGAINST IT",
+      hold: 5200,
+      foot: { left: "SAMPLE LEDGER · AUDIT → BASELINE", cta: { label: "SEE HOW SCORING WORKS ▸", href: "/auth?mode=signup" } },
+      body: '<div class="clip-lg" aria-label="Audit-to-baseline continuity ledger (sample data)">' +
+        '<div class="lgc-rail">' +
+          '<span class="lgc-node done"><i></i><s>Audited</s></span>' +
+          '<span class="lgc-node done"><i></i><s>Baseline locked</s></span>' +
+          '<span class="lgc-node done"><i></i><s>Projected</s></span>' +
+          '<span class="lgc-node done"><i></i><s>Shipped</s></span>' +
+          '<span class="lgc-node done"><i></i><s>Measured</s></span>' +
+          '<span class="lgc-node on"><i></i><s>Scored</s></span>' +
+        '</div>' +
+        '<div class="lgc-body">The audit\u2019s numbers become the locked baseline. Thirty days after the reallocation ships, the report compares what was promised to what the channels actually did — <span class="lgm">projected +$6,765/mo</span> vs <span class="lgm">measured +$6,214/mo</span>.</div>' +
+        '<div class="lgc-tally"><span>LEDGER: PROJECTED +$<b data-count="6765">0</b></span><span>MEASURED +$<b data-count="6214">0</b></span><span>ACCURACY <b data-count="91" data-suffix="%">0</b></span></div>' +
+        '</div>',
+      ins: "<b>Retainers renew on receipts</b> — every audit claim is scored against the locked baseline, and the client sees the score."
+    },
+    {
+      label: "LIVE RUN", cap: "REAL SESSION — THE SAMPLE AUDIT BUILDING ITSELF",
+      hold: 9000,
+      foot: { left: "SAMPLE DATA · REAL SESSION", cta: { label: "RUN A SAMPLE AUDIT ▸", href: "/clientfalcon/audit" } },
+      video: { src: "./media/audit-cf.webm", poster: "./media/audit-cf-poster.jpg",
+               alt: "Real ClientFalcon session: audit mode ranking issues and building the 30-day plan from labeled sample CSVs" },
+      ins: "<b>This actually ran</b> — a real session on labeled sample exports, captured unedited. Your prospect\u2019s export takes about a minute."
     }
   ]
 });
 })();
 </script>
-<script>
-// Reveal the walkthrough frame when the file exists; run it like a live screen:
-// autoplay muted loop, playing only while on screen, no controls, poster under reduced motion.
-(function () {
-  var box = document.getElementById("onbVideo");
-  if (!box) return;
-  var v = box.querySelector("video");
-  var rm = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  v.addEventListener("loadedmetadata", function () { box.style.display = "block"; });
-  if (rm) { v.removeAttribute("autoplay"); v.pause(); return; }
-  new IntersectionObserver(function (en) {
-    en[0].isIntersecting ? v.play().catch(function(){}) : v.pause();
-  }, { threshold: 0.25 }).observe(box);
-})();
-</script>
+
 <script>
 (function(){var evt=null;
 window.addEventListener("beforeinstallprompt",function(e){e.preventDefault();evt=e;

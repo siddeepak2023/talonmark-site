@@ -170,6 +170,7 @@ section{padding:120px 0;border-top:1px solid var(--line-soft);position:relative}
 .sec-row{display:flex;justify-content:space-between;align-items:flex-end;gap:40px}
 .art{display:block}
 .art--sphere{width:190px;height:190px;flex:none;margin-bottom:64px}
+#benefits .art--sphere{margin-right:105px} /* nudge checkmark left to the timer column (transform conflicts with .rv reveal) */
 @media(max-width:920px){.art--sphere{display:none}}
 
 /* ============ BENTO ============ */
@@ -480,6 +481,10 @@ body{background:url(textures/halftone-bone.png) repeat fixed 0 0/720px 720px,var
 .art--eclipse{animation:eclipse-pulse 5.5s ease-in-out infinite}
 @keyframes eclipse-pulse{0%,100%{opacity:.82}50%{opacity:1}}
 @media(prefers-reduced-motion:reduce){.art--eclipse{animation:none}}
+
+.shot-dark{display:block}.shot-light{display:none}
+[data-theme="light"] .shot-dark{display:none}
+[data-theme="light"] .shot-light{display:block}
 /* ============================================================
    DUSK SHOWCASE — built-mockup fragment kit (no screenshots)
    Goliath-style gradient panels + floating UI fragments.
@@ -781,8 +786,13 @@ body{background:url(textures/halftone-bone.png) repeat fixed 0 0/720px 720px,var
 .sc-feature .sc-kpi--hero{grid-column:auto}
 .sc-feature .sc-kpi--hero .k-val{font-size:32px}
 
+/* static-site duo grid: pack tabs beside cost donut */
+.sc-duo{display:grid;grid-template-columns:1.25fr 1fr;gap:12px;margin-top:12px;align-items:start}
+@media(max-width:700px){.sc-duo{grid-template-columns:1fr}}
+
 /* onboarding walkthrough video frame (shown only when the mp4 exists) */
-.onb-video{border:1px solid var(--line);background:var(--bg);margin-bottom:26px}
+/* narrower than full bleed: keeps the docked falcon's claw clear of the frame */
+.onb-video{border:1px solid var(--line);background:var(--bg);margin:0 auto 26px;max-width:820px}
 .onb-video video{display:block;width:100%;height:auto}
 
 /* ── scm v2 minis (ported from talon showcase.css) ── */
@@ -958,7 +968,7 @@ body{background:url(textures/halftone-bone.png) repeat fixed 0 0/720px 720px,var
    words without adding a space (the brand stays one word). */
 .wm2{font-weight:400;opacity:.85}
 
-/* ── Ledger anatomy — ported from talonomic 2026-07-16 ── */
+/* ── Ledger anatomy — the decision→outcome lifecycle (talonomic-first; port to talonmark after) ── */
 .ledger-sec .sec-head p{max-width:560px}
 .lg-frame{border:1px solid var(--line);background:var(--card);border-radius:12px;overflow:hidden}
 .lg-rail{display:flex;border-bottom:1px solid var(--line-soft)}
@@ -995,8 +1005,11 @@ body{background:url(textures/halftone-bone.png) repeat fixed 0 0/720px 720px,var
 .xprod p{margin:0;font-size:14.5px;color:var(--fg);flex:1;min-width:260px}
 .xprod a{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--signal);text-decoration:none;white-space:nowrap}
 .xprod a:hover{text-decoration:underline}
+
 /* ── agent bench — one card per shipped agent; the work, not the count ── */
 .bench-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.bench-grid .calc{grid-column:span 2;margin-top:0}
+@media(max-width:960px){.bench-grid .calc{grid-column:1/-1}}
 @media(max-width:960px){.bench-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:620px){.bench-grid{grid-template-columns:1fr}}
 .bn-card{border:1px solid var(--line);background:var(--card);border-radius:12px;padding:18px 18px 14px;display:flex;flex-direction:column;gap:10px;min-width:0}
@@ -1019,6 +1032,7 @@ body{background:url(textures/halftone-bone.png) repeat fixed 0 0/720px 720px,var
 .calc-out{text-align:center}
 .calc-out .co-n{font-size:clamp(1.9rem,4vw,2.7rem);font-weight:800;letter-spacing:-.02em;color:var(--signal)}
 .calc-out .co-l{font-size:12.5px;color:var(--mut);max-width:300px;margin:8px auto 0;line-height:1.5}
+
 /* ── integrations hub — exports in, product core, artifacts out ── */
 .hub{display:grid;grid-template-columns:1fr 1.35fr 1fr;gap:52px;align-items:center;margin-top:14px}
 @media(max-width:860px){.hub{grid-template-columns:1fr}}
@@ -1082,7 +1096,10 @@ body{background:url(textures/halftone-bone.png) repeat fixed 0 0/720px 720px,var
 .nav-dd-menu a{display:block;padding:9px 12px;font-family:"Instrument Sans","Hanken Grotesk",sans-serif;font-size:13px;font-weight:500;letter-spacing:.01em;text-transform:none;color:var(--mut);transition:color .15s ease,background .15s ease}
 .nav-dd-menu a:hover{color:var(--signal);background:var(--bg2)}
 
-/* ===== DUSK interlude band + sentinel bust + ledger sphere (ported from PF) ===== */
+/* ---------- INTERLUDE BANDS — theme-flipped full-bleed surfaces.
+   Same halftone atmosphere as the page body, opposite tile: bone dots on the
+   ink band (light mode), ink dots on the paper band (dark mode). `fixed`
+   keeps the tile aligned with the page atmosphere through the flip. ---------- */
 .interlude{
   background:url(textures/halftone-bone.png) repeat fixed 0 0/720px 720px,#0A0A0B;padding:76px 0;
   --bg:#0A0A0B;--bg2:#111110;--card:#141413;--fg:#EDECE8;
@@ -1097,16 +1114,71 @@ body{background:url(textures/halftone-bone.png) repeat fixed 0 0/720px 720px,var
 .interlude .sec-head h2,.interlude h3{color:var(--fg)}
 .interlude .sec-head p{color:var(--mut)}
 .feed-duo{position:relative;margin-bottom:24px}
+/* keep the bench copy out of the head's column at mid widths */
 @media(min-width:861px){#bench .sec-head{max-width:min(640px,50%);margin-bottom:36px}}
 .feed-duo .rec-mock{margin:0}
-/* head = verbatim drawBust at 430x340 native, CSS-scaled as one bitmap (same
-   picture, not re-rendered). Absolute, anchored bottom-right, scales up-left. */
+/* head = live canvas render (crisp). Rendered at the SAME 430:340 aspect, so the
+   silhouette is unchanged — drawBust just draws denser at this size, crisp, never
+   upscaled-soft (no PNG, no transform:scale). Right column, bottom-aligned so it
+   rises as the card shrinks; pushed right so the back of the head reaches past the
+   content edge. */
+/* head = verbatim drawBust at 430x340 native (IDENTICAL dots to committed) then
+   CSS-scaled 1.4 as one bitmap — same picture, not re-rendered. Absolutely placed
+   so the card sizes on its own; anchored bottom-right, scales up-left, right edge
+   pushed past the content edge, bottom at the card line. Neck cut kept (no mask). */
 .art--bust{position:absolute;right:-64px;bottom:35px;width:430px;height:340px;
-  transform:scale(1.12) !important;transform-origin:100% 100%;image-rendering:auto;pointer-events:none}
-@media(max-width:1120px){.art--bust{transform:scale(1.05) !important;right:-24px}}
+  transform:scale(1.17) !important;transform-origin:100% 100%;image-rendering:auto;pointer-events:none}
+@media(max-width:1120px){.art--bust{transform:scale(1.10) !important;right:-24px}}
 .art--oort{width:320px;height:320px;display:block;justify-self:end;align-self:center;transform:translateY(-35px)}
 @media(max-width:860px){
   .feed-duo{position:static}
   .art--bust{position:static;transform:scale(1) !important;width:min(360px,84%);height:auto;aspect-ratio:430/340;margin:8px auto 0}
   .art--oort{width:240px;height:240px;justify-self:center;margin-top:8px}
 }
+.interlude--engine{padding:64px 0 72px}
+.interlude--engine .wrap{position:relative}
+.eng-stream{position:absolute;left:4%;right:4%;height:1px;pointer-events:none;opacity:.45;
+  background:repeating-linear-gradient(90deg,var(--line) 0 12px,transparent 12px 30px);
+  animation:engstream 16s linear infinite}
+@keyframes engstream{to{background-position:300px 0}}
+@media (prefers-reduced-motion: reduce){.eng-stream{animation:none}}
+/* eyebrow hairline draws in on reveal */
+.sec-head .eyebrow::before{transform:scaleX(0);transform-origin:left;transition:transform .7s cubic-bezier(.22,.8,.24,1) .15s}
+.sec-head.rv.on .eyebrow::before{transform:scaleX(1)}
+@media (prefers-reduced-motion: reduce){.sec-head .eyebrow::before{transform:none;transition:none}}
+
+/* Perf: let the browser skip layout/paint for offscreen lower sections.
+   Only sections BELOW the falcon dock (#bench) — keeps dock scroll math intact.
+   contain-intrinsic-size remembers real height after first render (no jump). */
+#gallery,#integrations,#engine,#pricing,#faq{
+  content-visibility:auto;contain-intrinsic-size:auto 720px;
+}
+
+/* ── clip player — coded dashboard scenes in the .shot frame ─────────────── */
+.clip-stage{opacity:0;transform:translateY(6px);transition:opacity .5s ease,transform .5s ease;
+  padding:clamp(14px,2vw,22px);min-height:430px;display:flex;flex-direction:column;justify-content:center}
+.clip-stage.show{opacity:1;transform:none}
+.clip-stage .sc-panel{padding:clamp(16px,2.2vw,26px)}
+.clip-stage .sc-kpis{margin-bottom:12px}
+.clip-video{width:100%;display:block;border-radius:10px;border:1px solid var(--line-soft);background:#000}
+/* compact ledger rail for the clip scene (mirrors .lg-frame, non-interactive) */
+.clip-lg{border:1px solid var(--line);background:var(--card);border-radius:12px;overflow:hidden}
+.clip-lg .lgc-rail{display:flex;border-bottom:1px solid var(--line-soft)}
+.clip-lg .lgc-node{flex:1;min-width:0;padding:11px 6px 9px;text-align:center;position:relative}
+.clip-lg .lgc-node+.lgc-node{border-left:1px solid var(--line-soft)}
+.clip-lg .lgc-node i{display:block;width:7px;height:7px;border-radius:50%;border:1.5px solid var(--mut);margin:0 auto 6px}
+.clip-lg .lgc-node.done i{background:var(--fg);border-color:var(--fg)}
+.clip-lg .lgc-node.on i{background:var(--signal);border-color:var(--signal);box-shadow:0 0 0 3px color-mix(in srgb,var(--signal) 18%,transparent)}
+.clip-lg .lgc-node s{font-family:"JetBrains Mono",monospace;font-size:9px;letter-spacing:.07em;text-transform:uppercase;color:var(--mut);display:block;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.clip-lg .lgc-node.on s{color:var(--fg)}
+.clip-lg .lgc-body{padding:16px 20px;font-size:13.5px;line-height:1.6;color:var(--fg)}
+.clip-lg .lgc-body .lgm{font-family:"JetBrains Mono",monospace;font-size:12px;background:var(--bg2);border:1px solid var(--line-soft);padding:2px 7px;border-radius:6px;white-space:nowrap}
+.clip-lg .lgc-tally{display:flex;gap:14px;flex-wrap:wrap;border-top:1px solid var(--line-soft);padding:11px 20px;
+  font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+.clip-lg .lgc-tally b{color:var(--fg);font-weight:600}
+@media(max-width:700px){
+  .clip-stage{min-height:360px;padding:10px}
+  .clip-lg .lgc-node s{font-size:8px}
+  .clip-lg .lgc-rail .lgc-node:nth-child(n+5){display:none} /* keep 4 lifecycle steps on tiny screens */
+}
+@media(prefers-reduced-motion:reduce){.clip-stage{transition:none}}
