@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600&family=Inter+Tight:wght@600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./dusk.css?v=20260739">
+<link rel="stylesheet" href="./dusk.css?v=20260740">
 <style>
 .hero-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:center}
 .pdf-row{display:flex;gap:16px;align-items:flex-start;margin-bottom:16px}
@@ -152,19 +152,19 @@
         <div class="lg-line" id="lgLine"><span class="lg-k" id="lgK"></span><span class="lg-v" id="lgV"></span></div>
       </div>
       <div class="lg-prog" aria-hidden="true"><i id="lgProg"></i></div>
-      <div class="lg-foot"><span>SAMPLE RECOMMENDATION · CLIENT HEALTH</span><span class="lg-tally">LEDGER: PROJECTED +$1,120 · REALIZED +$980 · 88%</span></div>
+      <div class="lg-foot"><span>SAMPLE RECOMMENDATION · CLIENT HEALTH</span><span class="lg-tally">LEDGER: PROJECTED reallocate $13.4K · REALIZED — fills from your exports</span></div>
     </div>
   </div>
 </section>
 <script>
 (function(){
   var stages=[
-    ["Detected","Client Health flagged <b>Meridian Retail</b>: blended ROAS under breakeven on 11 of the last 14 days, driven by Display."],
-    ["Exact change","<span class=\"lgm\">Shift budget · Google Ads — Meridian Retail: Display $60/day → Search $40 + PMax $20</span>"],
-    ["Projected","<b>+$1,120/mo</b> client return · confidence 74% · the formula behind the number is attached to the card."],
+    ["Detected","Client Health flagged <b>Bloom Botanicals</b>: blended ROAS <b>1.69×</b>, below the 2.0× breakeven — dragged by Meta at 0.82×."],
+    ["Exact change","<span class=\"lgm\">Rework Meta · Bloom Botanicals: $13.4K at 0.82× ROAS → shift toward Email (4.54×) and Google (2.11×)</span>"],
+    ["Projected","<b>$13.4K</b> in Meta spend at 0.82× is the reallocatable budget · the formula behind the number is attached to the card."],
     ["Approved","You approved it. The change is yours to apply — one click copies the exact move. Nothing touches a client account without you."],
     ["Measured","Each new export you drop is scored against the projection: ROAS, spend mix, and conversions."],
-    ["Realized","<b>+$980/mo</b> measured over 30 days — 88% of projection. Stored on the client's record — the audit that wins the pitch becomes the baseline that keeps it."]
+    ["Realized","Your realized number lands here, scored against the projection. The client's record fills from real exports — not a demo figure."]
   ];
   var frame=document.getElementById("lgFrame"); if(!frame) return;
   var nodes=frame.querySelectorAll(".lg-node"),k=document.getElementById("lgK"),v=document.getElementById("lgV"),
@@ -211,9 +211,9 @@
       <div class="rm-bar"><span>agent feed — one card</span><span>SAMPLE DATA · LIVE PRODUCT UI</span></div>
       <div class="rm-body">
         <div class="rm-head"><span>PROSPECT AUDIT</span><span>CONFIDENCE 74%</span></div>
-        <p class="rm-title">Pause the bottom ad set — Search — Generic</p>
-        <p class="rm-move">Google Ads → ad set status: <b>$1,900/mo of spend at 0.7x ROAS</b></p>
-        <div class="rm-proj">Projected <b>+$1,340/mo</b> for the client <span>· the formula is attached to the card</span></div>
+        <p class="rm-title">Rework the bottom channel — Pinterest</p>
+        <p class="rm-move">Ridgeway Coffee → Pinterest: <b>0.69x ROAS, $11.1K spend returning $7.7K</b></p>
+        <div class="rm-proj">Reallocate <b>$11.1K</b> for the client <span>· the formula is attached to the card</span></div>
         <div class="rm-actions"><span class="rm-btn rm-btn--approve">Approve</span><span class="rm-btn">Dismiss</span><span class="rm-note">Nothing executes without you</span></div>
       </div>
     </div>
@@ -224,7 +224,7 @@
         <div class="bn-name">Prospect Audit</div>
         <p class="bn-watch">Turns a prospect's ad export into a ranked issue list — evidence, first move, projected impact — and a 30-day plan for the pitch.</p>
         <div class="bn-rec"><span class="bn-tag">Sample finding</span>
-          <span class="bn-move">Pause the bottom ad set on <b>Search — Generic</b> — $1,900/mo of spend at 0.7x ROAS · projected +$1,340/mo</span></div>
+          <span class="bn-move"><b>Ridgeway Coffee:</b> Pinterest at 0.69x ROAS — $11.1K spend returning $7.7K · reallocate before the pitch</span></div>
         <div class="bn-ledger">Ledger · the audit becomes the client's baseline</div>
       </div>
       <div class="bn-card">
@@ -238,21 +238,21 @@
         <div class="bn-name">Client Health</div>
         <p class="bn-watch">Ranks your whole book by blended ROAS against breakeven and flags the clients drifting toward a churn conversation.</p>
         <div class="bn-rec"><span class="bn-tag">Sample flag</span>
-          <span class="bn-move"><b>Meridian Retail</b> at 1.4x blended ROAS, below the 2.0x band — book the review before the renewal call happens without you</span></div>
+          <span class="bn-move"><b>Bloom Botanicals</b> at 1.69x blended ROAS, below the 2.0x band — book the review before the renewal call happens without you</span></div>
         <div class="bn-ledger">Ledger · fills from your approvals</div>
       </div>
       <div class="bn-card">
         <div class="bn-name">Campaign QA</div>
         <p class="bn-watch">Compares this period against last on every client and flags drift — spend creep, ROAS slides, budget quietly moving to losers.</p>
-        <div class="bn-rec"><span class="bn-tag">Sample flag</span>
-          <span class="bn-move">Display spend on <b>Harbor &amp; Co</b> up 31% period-over-period at falling ROAS — flagged with the rows behind it</span></div>
+        <div class="bn-rec"><span class="bn-tag">How it works</span>
+          <span class="bn-move">Compares each client period-over-period and flags spend creep or ROAS slides before they compound — active once you've run two periods</span></div>
         <div class="bn-ledger">Ledger · fills from your approvals</div>
       </div>
       <div class="bn-card">
         <div class="bn-name">Portfolio Brief</div>
         <p class="bn-watch">Opens your day agency-wide: which clients need you, which recommendations are waiting, what revenue is at risk this week.</p>
         <div class="bn-rec"><span class="bn-tag">Sample brief line</span>
-          <span class="bn-move">"2 clients under breakeven · <b>4 recommendations waiting</b> · $3,100/mo of client spend flagged for review."</span></div>
+          <span class="bn-move">"8 clients in the book · median <b>3.32× ROAS</b> · 1 under breakeven · $66K of client revenue flagged for review."</span></div>
         <div class="bn-ledger">Ledger · fills from your approvals</div>
       </div>
     </div>
