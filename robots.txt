@@ -4,3 +4,5 @@ Disallow: /app/
 Disallow: /dashboard
 Disallow: /auth
 Disallow: /billing
+
+Sitemap: https://client.bizfalconai.com/sitemap.xml
