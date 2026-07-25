@@ -29,9 +29,91 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../dusk.css?v=20260725a">
-<link rel="stylesheet" href="./blog.css?v=20260725a">
+<link rel="stylesheet" href="../dusk.css?v=20260725b">
+<link rel="stylesheet" href="./blog.css?v=20260725b">
 <script>try{var t=localStorage.getItem("bf-theme");if(t==="light"||(!t&&matchMedia("(prefers-color-scheme: light)").matches))document.documentElement.setAttribute("data-theme","light")}catch(e){}</script>
+<!-- BF-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://bizfalconai.com/#organization",
+      "name": "BizFalcon AI",
+      "url": "https://bizfalconai.com/",
+      "email": "hello@bizfalconai.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://bizfalconai.com/falcon-bird-white.png",
+        "width": 1190,
+        "height": 933
+      },
+      "founder": {
+        "@type": "Person",
+        "name": "Siddharth Deepak"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://client.bizfalconai.com/#website",
+      "url": "https://client.bizfalconai.com/",
+      "name": "ClientFalcon",
+      "inLanguage": "en-US",
+      "publisher": {
+        "@id": "https://bizfalconai.com/#organization"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "mainEntityOfPage": "https://client.bizfalconai.com/blog/client-report-template-structure.html",
+      "url": "https://client.bizfalconai.com/blog/client-report-template-structure.html",
+      "headline": "The Client Report Structure That Survives the Scroll",
+      "description": "A monthly marketing report structure clients actually read: verdict first, three numbers, what we did, what's next — and what to cut.",
+      "image": "https://client.bizfalconai.com/og.png",
+      "datePublished": "2026-07-12",
+      "dateModified": "2026-07-25",
+      "author": {
+        "@type": "Person",
+        "name": "Siddharth Deepak"
+      },
+      "publisher": {
+        "@id": "https://bizfalconai.com/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://client.bizfalconai.com/blog/#blog"
+      },
+      "inLanguage": "en-US",
+      "wordCount": 288,
+      "articleSection": "Reporting craft"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://client.bizfalconai.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://client.bizfalconai.com/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "The Client Report Structure That Survives the Scroll",
+          "item": "https://client.bizfalconai.com/blog/client-report-template-structure.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- /BF-LD -->
 </head>
 <body>
 <header class="nav">
@@ -52,7 +134,7 @@
 
 <article class="blog-wrap art">
   <a class="art-back" href="./">← All posts</a>
-  <div class="post-meta"><span class="cat">Reporting craft</span><span>July 2026</span><span>6 min read</span><span>By Siddharth Deepak — Founder</span></div>
+  <div class="post-meta"><span class="cat">Reporting craft</span><time datetime="2026-07-12">July 12, 2026</time><span>1 min read</span><span>By Siddharth Deepak — Founder</span></div>
   <h1>The Client Report Structure That Survives the Scroll</h1>
   <p class="lede">Most reports are built to prove work happened. The ones that renew retainers are built to answer one question fast: is my money working, and what are you doing about it?</p>
   <div class="art-body">
@@ -75,6 +157,17 @@
 <div class="art-note">Rule of thumb: if a section survives copy-paste between two different clients unedited, it shouldn't be in either report.</div>
 
   </div>
+
+<!-- BF-RELATED -->
+<nav class="art-related" aria-label="Related reading">
+  <div class="eyebrow">Keep reading</div>
+  <ul>
+    <li><a href="./retainer-margin-math.html">Retainer Margin Math: Which Clients Are Actually Profitable</a></li>
+    <li><a href="./true-cost-of-client-reporting.html">The True Cost of Client Reporting (It&#x27;s Not the Hours — It&#x27;s Whose Hours)</a></li>
+    <li><a href="../compare.html">ClientFalcon vs AgencyAnalytics vs Swydo</a></li>
+  </ul>
+</nav>
+<!-- /BF-RELATED -->
 
 <div class="art-cta">
   <div class="eyebrow">Reports that write themselves</div>
