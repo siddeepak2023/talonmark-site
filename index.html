@@ -104,6 +104,14 @@
       "offers": [
         {
           "@type": "Offer",
+          "name": "Free",
+          "price": "0",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "url": "https://client.bizfalconai.com/#pricing"
+        },
+        {
+          "@type": "Offer",
           "name": "Solo",
           "price": "19",
           "priceCurrency": "USD",
@@ -121,13 +129,13 @@
         {
           "@type": "Offer",
           "name": "Agency",
-          "price": "69",
+          "price": "129",
           "priceCurrency": "USD",
           "availability": "https://schema.org/InStock",
           "url": "https://client.bizfalconai.com/#pricing",
           "priceSpecification": {
             "@type": "UnitPriceSpecification",
-            "price": "69",
+            "price": "129",
             "priceCurrency": "USD",
             "billingDuration": 1,
             "billingIncrement": 1,
@@ -708,6 +716,19 @@
       </div>
     </div>
     <div class="plans">
+      <div class="plan rv">
+        <div class="plan-name">Free</div>
+        <div class="plan-bill" style="margin:0 0 10px">1 client</div>
+        <div class="plan-price">$0</div>
+        <div class="plan-bill">No card required</div>
+        <ul>
+          <li>One client workspace</li>
+          <li>Full audit on their export</li>
+          <li>PDF report, ClientFalcon-branded</li>
+          <li>Upgrade when you win the second client</li>
+        </ul>
+        <a class="btn btn--ghost" href="/auth?mode=signup">Start free</a>
+      </div>
       <div class="plan rv">
         <div class="plan-name">Solo</div>
         <div class="plan-bill" style="margin:0 0 10px">Up to 3 clients</div>
