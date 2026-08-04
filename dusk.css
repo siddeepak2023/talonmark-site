@@ -921,6 +921,14 @@ body{background:url(textures/halftone-bone.webp) repeat fixed 0 0/720px 720px,va
   background-image:radial-gradient(var(--dot) 1px,transparent 1px);
   background-size:22px 22px;opacity:.3;
 }
+
+.scm::before{
+  background-image:url(textures/halftone-bone.webp);
+  background-size:240px 240px;background-repeat:repeat;opacity:.16;
+}
+[data-theme="light"] .scm::before{
+  background-image:url(textures/halftone-ink.webp);opacity:.13;
+}
 .scm > *{position:relative}
 .scm-tag{
   position:absolute;top:9px;right:11px;font-family:"JetBrains Mono",monospace;
