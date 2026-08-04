@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600&family=Hanken+Grotesk:wght@400;700&family=Inter+Tight:wght@800&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./dusk.css?v=20260803n">
+<link rel="stylesheet" href="./dusk.css?v=20260804a">
 <style>
 .hero-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:center}
 .pdf-row{display:flex;gap:16px;align-items:flex-start;margin-bottom:16px}
@@ -338,6 +338,9 @@
         <h2>Every agent shows its work. Every move lands in the ledger.</h2>
         <p>Each one watches a different part of the agency loop — pitching, reporting, monitoring, retention — and proposes the exact next move. You approve every one; nothing executes on its own. Sample recommendations below; your ledger fills from your first approval.</p>
       </div>
+      <!-- MOVED: head sits beside the description, not in a row below it. -->
+<canvas class="art art--bust rv d1" data-art="bust" aria-hidden="true"></canvas>
+
     </div>
 
     <div class="feed-duo rv d1">
@@ -354,7 +357,19 @@
         <div class="rm-actions"><span class="rm-btn rm-btn--approve">Approve</span><span class="rm-btn">Dismiss</span><span class="rm-note">Nothing executes without you</span></div>
       </div>
     </div>
-      <canvas class="art art--bust rv d1" data-art="bust" aria-hidden="true"></canvas>
+      <!-- MOVED: estimator shares the feed's row. -->
+      <div class="calc rv d2" id="hoursCalc">
+      <div>
+        <div class="calc-k">Reporting-hours calculator</div>
+        <div class="calc-row"><label for="hcClients">Clients</label><input id="hcClients" type="number" min="0" step="1" value="12" inputmode="numeric"></div>
+        <div class="calc-row"><label for="hcHours">Hours per report</label><input id="hcHours" type="number" min="0" step="0.5" value="3" inputmode="decimal"></div>
+        <div class="calc-row"><label for="hcRate">Your billable rate ($/hr)</label><input id="hcRate" type="number" min="0" step="10" value="120" inputmode="numeric"></div>
+      </div>
+      <div class="calc-out">
+        <div class="co-n" id="hcOut">$4,320/mo</div>
+        <div class="co-l">Your numbers, multiplied: clients × hours per report × your rate — the billable time monthly reporting consumes today. ClientFalcon builds the computed draft; you edit and ship it.</div>
+      </div>
+    </div>
     </div>
     <div class="bench-grid rv d1">
       <div class="bn-card">
@@ -395,18 +410,7 @@
     </div>
 
     <!-- Honest calculator: pure arithmetic on the visitor's own inputs. -->
-    <div class="calc rv d2" id="hoursCalc">
-      <div>
-        <div class="calc-k">Reporting-hours calculator</div>
-        <div class="calc-row"><label for="hcClients">Clients</label><input id="hcClients" type="number" min="0" step="1" value="12" inputmode="numeric"></div>
-        <div class="calc-row"><label for="hcHours">Hours per report</label><input id="hcHours" type="number" min="0" step="0.5" value="3" inputmode="decimal"></div>
-        <div class="calc-row"><label for="hcRate">Your billable rate ($/hr)</label><input id="hcRate" type="number" min="0" step="10" value="120" inputmode="numeric"></div>
-      </div>
-      <div class="calc-out">
-        <div class="co-n" id="hcOut">$4,320/mo</div>
-        <div class="co-l">Your numbers, multiplied: clients × hours per report × your rate — the billable time monthly reporting consumes today. ClientFalcon builds the computed draft; you edit and ship it.</div>
-      </div>
-    </div>
+    
   </div>
 </section>
 <script>
@@ -932,7 +936,7 @@
   </div>
 </footer>
 
-<script defer src="./dusk-art.js?v=20260803n"></script>
+<script defer src="./dusk-art.js?v=20260804a"></script>
 
 <script>
 (function(){var evt=null;
