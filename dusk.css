@@ -1239,7 +1239,12 @@ body{background:url(textures/halftone-bone.webp) repeat fixed 0 0/720px 720px,va
 .feed-duo .rec-mock{margin:0;max-width:none}
 /* overhang eats the .wrap gutter but never the viewport: it grows only with the
    slack outside the 1180 measure, so the head can't clip at 1280 or below. */
-.art--bust{justify-self:end;align-self:end;width:100%;max-width:430px;height:340px;
+/* align-self:start, not end. .feed-duo sets align-items:start (see the rule near the end of
+   this file) but an item-level align-self WINS over the container — the hazard the comment
+   above .feed-duo already warns about. With :end the head sank to the baseline of a row whose
+   other cell (.rec-mock, the agent feed) is taller, leaving dead space above it. Starting it
+   puts its top level with the card, which sits directly under the section description. */
+.art--bust{justify-self:end;align-self:start;width:100%;max-width:430px;height:340px;
   margin-right:calc(-1 * clamp(0px,(100vw - 1180px)/2 - 24px,96px));
   transform:scale(1.22) !important;transform-origin:100% 100%;
   image-rendering:auto;pointer-events:none}
@@ -1280,7 +1285,10 @@ body{background:url(textures/halftone-bone.webp) repeat fixed 0 0/720px 720px,va
 .clip-stage .sc-panel{padding:clamp(16px,2.2vw,26px);padding-top:38px}
 /* live product embed (real /teardown running in an iframe) */
 .live-shot{overflow:hidden}
-.live-frame{display:block;width:100%;height:min(72vh,640px);border:0;background:var(--bg)}
+/* Rounded to match the shell it sits in — see the talonomic copy for the reasoning. */
+.live-frame{display:block;width:100%;height:min(72vh,640px);border:0;background:var(--bg);
+  border-bottom-left-radius:10px;border-bottom-right-radius:10px}
+.live-wrap,.shot-wrap{overflow:hidden;border-radius:10px}
 @media(max-width:700px){.live-frame{height:78vh}}
 .clip-stage .sc-kpis{margin-bottom:12px}
 .clip-video{width:100%;display:block;border-radius:10px;border:1px solid var(--line-soft);background:#000}
