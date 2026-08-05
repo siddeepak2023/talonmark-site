@@ -1577,3 +1577,9 @@ section[id]::before{
 /* approval lands last, so the eye reads recommend -> approve as a sequence */
 .rv.on .scm-sched .sr2 .st:not(.live){animation:scmApprove .45s ease-out 1.25s both}
 @keyframes scmApprove{from{opacity:0;transform:scale(.82)}to{opacity:1;transform:none}}
+/* The estimator's figure pulses when it recomputes -- the live computation is the feature,
+   and a silent textContent swap shows none of it. Short and small on purpose: this fires on
+   every keystroke, so anything longer would still be running when the next one lands. */
+.calc-out--tick{animation:calcTick .28s ease-out}
+@keyframes calcTick{0%{transform:scale(1)}38%{transform:scale(1.045)}100%{transform:scale(1)}}
+@media(prefers-reduced-motion:reduce){.calc-out--tick{animation:none}}
