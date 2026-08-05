@@ -1551,3 +1551,29 @@ section[id]::before{
 .promptbox .pb-tools b{display:inline-flex;align-items:center}
 .btn .btn-ico,
 .btn-ico{width:15px;height:15px;display:inline-block;vertical-align:-0.12em;margin-right:.4em;flex:none}
+
+/* ── the queue, working ────────────────────────────────────────────────────────
+   Static rows show a queue; these show it being WORKED, which is the claim the
+   product actually makes: recommendations arrive, you approve, nothing runs alone.
+   CSS only and .rv.on gated -- same idiom as every other artifact here, and no rAF,
+   so this cannot cost the hero frames the way a second canvas loop would. */
+.scm-sched .sr2{position:relative;overflow:hidden}
+.rv.on .scm-sched .sr2{animation:scmRowIn .5s cubic-bezier(.2,.7,.3,1) both}
+.rv.on .scm-sched .sr2:nth-child(1){animation-delay:.05s}
+.rv.on .scm-sched .sr2:nth-child(2){animation-delay:.30s}
+.rv.on .scm-sched .sr2:nth-child(3){animation-delay:.55s}
+@keyframes scmRowIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+
+/* the scan: one pass of the agent reading that row, timed to land just after it does */
+.scm-sched .sr2::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--signal) 22%,transparent),transparent);
+  transform:translateX(-100%)}
+.rv.on .scm-sched .sr2::after{animation:scmScan .9s ease-out both}
+.rv.on .scm-sched .sr2:nth-child(1)::after{animation-delay:.35s}
+.rv.on .scm-sched .sr2:nth-child(2)::after{animation-delay:.60s}
+.rv.on .scm-sched .sr2:nth-child(3)::after{animation-delay:.85s}
+@keyframes scmScan{to{transform:translateX(100%)}}
+
+/* approval lands last, so the eye reads recommend -> approve as a sequence */
+.rv.on .scm-sched .sr2 .st:not(.live){animation:scmApprove .45s ease-out 1.25s both}
+@keyframes scmApprove{from{opacity:0;transform:scale(.82)}to{opacity:1;transform:none}}
