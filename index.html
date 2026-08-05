@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600&family=Hanken+Grotesk:wght@400;700&family=Inter+Tight:wght@800&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./dusk.css?v=20260805g">
+<link rel="stylesheet" href="./dusk.css?v=20260805h">
 <style>
 .hero-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:center}
 .pdf-row{display:flex;gap:16px;align-items:flex-start;margin-bottom:16px}
@@ -256,7 +256,7 @@
     <div class="rv d1">
       <div class="shot live-shot" id="demoRoot">
         <div class="shot-bar"><span class="dots"><i></i><i></i><i></i></span><span>clientfalcon — live audit</span><span style="margin-left:auto">LIVE · RUNNING IN YOUR BROWSER</span></div>
-        <iframe class="live-frame" src="/dashboard/audit?demo=1&amp;embed=1" title="ClientFalcon live audit — running on sample data" loading="lazy" referrerpolicy="no-referrer"></iframe>
+        <iframe class="live-frame" id="demoFrame" src="/dashboard/audit?demo=1&amp;embed=1" title="ClientFalcon live audit — running on sample data" loading="lazy" referrerpolicy="no-referrer"></iframe>
         <div class="shot-foot"><span>COMPUTED IN YOUR BROWSER</span><a href="/dashboard/audit?demo=1">OPEN FULL-SCREEN ▸</a></div>
       </div>
     </div>
@@ -942,7 +942,7 @@
   </div>
 </footer>
 
-<script defer src="./dusk-art.js?v=20260805g"></script>
+<script defer src="./dusk-art.js?v=20260805h"></script>
 
 <script>
 (function(){var evt=null;
@@ -979,6 +979,29 @@ document.addEventListener("click",function(e){var t=e.target.closest&&e.target.c
   });
   document.addEventListener("click",function(){closeAll(null);});
   document.addEventListener("keydown",function(e){if(e.key==="Escape"){closeAll(null);}});
+})();
+</script>
+
+<script>
+/* Publish this page's theme to the embedded audit demo -- same contract as PF: useTheme reads
+   ?theme= at mount and a same-origin bf-theme postMessage afterwards. Without both the frame
+   painted from its own localStorage, so a light page could hold a dark preview. data-theme on
+   <html> is the single source of truth; the boot script at the top sets it. */
+(function () {
+  var f = document.getElementById("demoFrame");
+  if (!f) return;
+  function hostTheme() {
+    return document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark";
+  }
+  var src = f.getAttribute("src");
+  if (src && src.indexOf("theme=") === -1) f.setAttribute("src", src + "&theme=" + hostTheme());
+  function push() {
+    try { f.contentWindow.postMessage({ type: "bf-theme", theme: hostTheme() }, location.origin); }
+    catch (e) { /* frame not ready; the next toggle lands */ }
+  }
+  new MutationObserver(push).observe(document.documentElement, {
+    attributes: true, attributeFilter: ["data-theme"]
+  });
 })();
 </script>
 </body>
