@@ -7,16 +7,16 @@
 <meta name="theme-color" content="#F8F7F3">
 <title>ClientFalcon — The audit that wins the pitch becomes the client's baseline</title>
 <meta name="description" content="AI client reporting for marketing agencies. Ad platform exports become an AI-written narrative and a white-label PDF your client actually reads — plus Campaign Autopilot with human approval.">
-<link rel="icon" href="favicon.ico?v=20260806k">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=20260806k">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=20260806k">
+<link rel="icon" href="favicon.ico?v=20260806l">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=20260806l">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=20260806l">
 <link rel="manifest" href="/talonmark-app.webmanifest">
 <meta name="apple-mobile-web-app-title" content="ClientFalcon">
 <meta name="mobile-web-app-capable" content="yes">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600&family=Hanken+Grotesk:wght@400;700&family=Inter+Tight:wght@800&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./dusk.css?v=20260806k">
+<link rel="stylesheet" href="./dusk.css?v=20260806l">
 <style>
 .hero-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:center}
 .pdf-row{display:flex;gap:16px;align-items:flex-start;margin-bottom:16px}
@@ -247,7 +247,12 @@
   <div class="wrap">
     <!-- sec-row gives the falcon an open right column to dock into (company-site parity) -->
     <div class="sec-row">
-      <div class="sec-head rv" data-dock>
+      <!-- data-dock-clearance="32": the default 8px sat the claws right on the frame's
+           top border, which read as touching. 32px lifts them clear. This section has
+           59px of headroom above the falcon at the default (measured 1280x800,
+           2026-08-06), so 32 keeps a 35px margin before the wing would reach the
+           section boundary — the failure ProfitFalcon hit. -->
+      <div class="sec-head rv" data-dock data-dock-clearance="32">
         <div class="eyebrow">See it run — live</div>
         <h2>Every client&rsquo;s report status, at a glance.</h2>
         <p>This is the real product below, running in your browser — not a screenshot. It opens on a sample audit, clearly labelled as sample data; drop a prospect's own ad export to run it for real. Every number is computed on the spot.</p>
@@ -946,7 +951,7 @@
   </div>
 </footer>
 
-<script defer src="./dusk-art.js?v=20260806k"></script>
+<script defer src="./dusk-art.js?v=20260806l"></script>
 
 <script>
 (function(){var evt=null;
