@@ -7,16 +7,16 @@
 <meta name="theme-color" content="#F8F7F3">
 <title>ClientFalcon — The audit that wins the pitch becomes the client's baseline</title>
 <meta name="description" content="AI client reporting for marketing agencies. Ad platform exports become an AI-written narrative and a white-label PDF your client actually reads — plus Campaign Autopilot with human approval.">
-<link rel="icon" href="favicon.ico?v=20260807a">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=20260807a">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=20260807a">
+<link rel="icon" href="favicon.ico?v=20260807b">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=20260807b">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=20260807b">
 <link rel="manifest" href="/talonmark-app.webmanifest">
 <meta name="apple-mobile-web-app-title" content="ClientFalcon">
 <meta name="mobile-web-app-capable" content="yes">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600&family=Hanken+Grotesk:wght@400;700&family=Inter+Tight:wght@800&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./dusk.css?v=20260807a">
+<link rel="stylesheet" href="./dusk.css?v=20260807b">
 <style>
 /* ONE column, because there is only one child. The 1fr 1.05fr template reserved a
    second column that nothing has ever filled: measured at 1280px it was 555px of
@@ -470,17 +470,48 @@
     </div>
     <div class="shot rv d1" aria-label="The ClientFalcon report builder screen">
       <div class="shot-bar"><span class="dots"><i></i><i></i><i></i></span><span>clientfalcon — report builder</span><span style="margin-left:auto">SAMPLE INPUTS · BATCH ALL CLIENTS · PARSED IN YOUR BROWSER</span></div>
+      <!-- The section above promises "your client can audit any figure". It used to
+           deliver a form wireframe and a grey placeholder bar, naming a client that
+           does not exist in the sample and showing zero numbers — on the one section
+           whose whole job is to show the math. These are the computed figures for
+           Ridgeway Coffee, the flagship client of the sample book, each with the
+           expression that produced it. Guarded by
+           frontend/src/lib/clientBookFigures.test.ts against real runPack output.
+           The old placeholder name is deliberately not repeated here: the guard
+           greps for it, and a comment quoting it to explain itself would trip it. -->
       <div class="replica-form">
         <div class="rf-l">
           <div class="rf-field">Agency name (your brand)<i>Bright Harbor Media</i></div>
-          <div class="rf-field">Client name<i>Acme Coffee Co.</i></div>
-          <div class="rf-field">Reporting period<i>May 2026</i></div>
+          <div class="rf-field">Client name<i>Ridgeway Coffee</i></div>
+          <div class="rf-field">Reporting period<i>Nov–Dec</i></div>
           <div class="rf-field">Brand accent<i>#8E2A22</i></div>
-          <div class="rf-field">Current period CSV<i>meta_campaigns_may.csv — required</i></div>
+          <div class="rf-field">Current period CSV<i>ridgeway_ads.csv — 40 rows</i></div>
         </div>
         <div class="rf-r">
-          <div class="pp-big" aria-hidden="true"><i class="hd"></i><i style="width:70%"></i><i style="width:55%"></i><i></i><i style="width:40%"></i><i style="width:70%"></i><i style="width:55%"></i></div>
-          <span>Report preview builds here — your logo, computed KPIs, written “why.”</span>
+          <div class="scm-vbadge">Number-checked</div>
+          <div class="pp-kpis">
+            <div class="pp-kpi">
+              <span class="ppk-l">Blended ROAS</span>
+              <b class="ppk-v">2.77&times;</b>
+              <span class="ppk-f">= revenue &divide; spend</span>
+            </div>
+            <div class="pp-kpi">
+              <span class="ppk-l">Ad spend</span>
+              <b class="ppk-v">$78.3K</b>
+              <span class="ppk-f">= &Sigma; spend &middot; 40 rows</span>
+            </div>
+            <div class="pp-kpi">
+              <span class="ppk-l">Attributed revenue</span>
+              <b class="ppk-v">$216.8K</b>
+              <span class="ppk-f">= &Sigma; revenue</span>
+            </div>
+            <div class="pp-kpi">
+              <span class="ppk-l">CPA</span>
+              <b class="ppk-v">$38.10</b>
+              <span class="ppk-f">= spend &divide; 2,055 conversions</span>
+            </div>
+          </div>
+          <span>Every figure opens to the expression that produced it — the same reconciliation your client sees in the report.</span>
         </div>
       </div>
     </div>
@@ -968,7 +999,7 @@
   </div>
 </footer>
 
-<script defer src="./dusk-art.js?v=20260807a"></script>
+<script defer src="./dusk-art.js?v=20260807b"></script>
 
 <script>
 (function(){var evt=null;

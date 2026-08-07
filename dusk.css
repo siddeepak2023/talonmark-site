@@ -1714,3 +1714,14 @@ section[id]::before{
 @media(max-width:620px){
   .nav-right .btn{display:none}
 }
+
+/* ── #product KPI panel (replaces the grey placeholder bar) ──────────────────
+   The section promises the client can audit any figure, so each tile carries the
+   expression that produced it, not just the number. Figures are Ridgeway Coffee's
+   computed marketing pack, guarded by clientBookFigures.test.ts. */
+.rf-r .pp-kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0 12px;width:100%}
+.rf-r .pp-kpi{border:1px solid var(--line);background:var(--bg2);padding:10px 12px;display:flex;flex-direction:column;gap:3px;min-width:0}
+.rf-r .ppk-l{font-family:"JetBrains Mono",monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
+.rf-r .ppk-v{font-family:"JetBrains Mono",monospace;font-size:19px;letter-spacing:-.02em;font-variant-numeric:tabular-nums;font-weight:700}
+.rf-r .ppk-f{font-family:"JetBrains Mono",monospace;font-size:9px;letter-spacing:.02em;color:var(--mut)}
+@media(max-width:620px){.rf-r .pp-kpis{grid-template-columns:1fr}}
