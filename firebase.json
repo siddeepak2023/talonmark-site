@@ -48,14 +48,6 @@
       {
         "source": "/clientfalcon/**",
         "destination": "/app/index.html"
-      },
-      {
-        "source": "/live",
-        "destination": "/app/index.html"
-      },
-      {
-        "source": "/live/**",
-        "destination": "/app/index.html"
       }
     ],
     "headers": [
