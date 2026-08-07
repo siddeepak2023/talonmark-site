@@ -1119,6 +1119,8 @@ body{background:url(textures/halftone-bone.webp) repeat fixed 0 0/720px 720px,va
 @media(prefers-reduced-motion:reduce){
   .rv.on .scm-modl .mr,.rv.on .scm-modl .mr::before,.rv.on .scm-modl .mr .tag2,
   .rv.on .scm-chart .bar,.rv.on .scm-chart .fc,.rv.on .scm-sched .sr2 .st.live::before,
+  .rv.on .scm-sched .sr2,.rv.on .scm-sched .sr2::after,
+  .rv.on .scm-sched .sr2 .st:not(.live),
   .rv.on .scm-up .fill,.rv.on .scm-up .lbl .busy,.rv.on .scm-up .lbl .done,
   .rv.on .scm-askr .q,.rv.on .scm-askr .cur,.rv.on .scm-ans{animation:none}
   .rv.on .scm-askr .q{width:auto}
