@@ -469,6 +469,15 @@ section{padding:88px 0;border-top:1px solid var(--line-soft);position:relative}
   html{scroll-behavior:auto}
   .rv{opacity:1;transform:none;transition:none}
   .chip .pulse,.caret{animation:none}
+  /* `*{transition-duration}` below does not touch ANIMATION, so every .rv.on
+     keyframe kept running under reduce. The queue-working sequence is the
+     loudest of them: five rows sliding in, five scan sweeps, then an approval
+     pop. Named rather than wildcarded, so a future animation has to opt in
+     deliberately instead of being silently killed. */
+  .rv.on .scm-sched .sr2,
+  .rv.on .scm-sched .sr2::after,
+  .rv.on .scm-sched .sr2 .st:not(.live),
+  .rv.on .scm-sched .sr2 .st.live::before{animation:none}
   *{transition-duration:.01ms!important}
 }
 
@@ -1720,6 +1729,9 @@ section[id]::before{
 .rv.on .scm-sched .sr2:nth-child(1){animation-delay:.05s}
 .rv.on .scm-sched .sr2:nth-child(2){animation-delay:.30s}
 .rv.on .scm-sched .sr2:nth-child(3){animation-delay:.55s}
+/* rows 4 and 5 were inheriting delay 0 and popping ahead of rows 2-3. */
+.rv.on .scm-sched .sr2:nth-child(4){animation-delay:.80s}
+.rv.on .scm-sched .sr2:nth-child(5){animation-delay:1.05s}
 @keyframes scmRowIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
 
 /* the scan: one pass of the agent reading that row, timed to land just after it does */
@@ -1730,6 +1742,8 @@ section[id]::before{
 .rv.on .scm-sched .sr2:nth-child(1)::after{animation-delay:.35s}
 .rv.on .scm-sched .sr2:nth-child(2)::after{animation-delay:.60s}
 .rv.on .scm-sched .sr2:nth-child(3)::after{animation-delay:.85s}
+.rv.on .scm-sched .sr2:nth-child(4)::after{animation-delay:1.10s}
+.rv.on .scm-sched .sr2:nth-child(5)::after{animation-delay:1.35s}
 @keyframes scmScan{to{transform:translateX(100%)}}
 
 /* approval lands last, so the eye reads recommend -> approve as a sequence */
