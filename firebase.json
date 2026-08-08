@@ -39,7 +39,7 @@
       },
       {
         "source": "/portal/**",
-        "destination": "/app/index.html"
+        "function": "portalPage"
       },
       {
         "source": "/clientfalcon",
